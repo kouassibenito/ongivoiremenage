@@ -343,9 +343,8 @@ class Corporate_model extends CI_Model {
 //actualites accueil limite 2
     function actualites_limite2(){
        
-      $id_actualite=1;
+      
       $this->db->limit(2);
-      $this->db->where('id_actualite',$id_actualite);
       $this->db->select()->from('actualite');
        
       $q = $this->db->get();
@@ -366,9 +365,8 @@ class Corporate_model extends CI_Model {
    //actualites accueil limite 3
     function actualites_limite3(){
        
-      $id_actualite=1;
-      $this->db->limit(3);
-      $this->db->where('id_actualite',$id_actualite);
+   
+      $this->db->limit(3); 
       $this->db->select()->from('actualite');
        
       $q = $this->db->get();
