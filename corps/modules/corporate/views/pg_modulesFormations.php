@@ -110,6 +110,9 @@
 										<h3 class="entry-title small"> <a href="service-single.html"><?php if(isset($info->titre)) echo $info->titre; ?></a> </h3>
 									</header>
 									<p class="content-3lines-ellipsis"><?php if(isset($info->description_court)) echo $info->description_court; ?> </p>
+
+
+									
 								</div>
 							</article>
 						</div>

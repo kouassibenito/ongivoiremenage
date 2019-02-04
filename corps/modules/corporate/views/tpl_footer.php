@@ -49,7 +49,7 @@
 								<ul class="list-unstyled greylinks">
 									
 									<li>
-										<p> <a href="blog-single-left.html"><?php if(isset($info->description_court)) echo $info->description_court; ?></a> </p>
+										<p> <a href="blog-single-left.html"><?php if(isset($info->description_court)) echo substr($info->description_court, 0,100)." ..."; ?></a> </p>
 										<div class="entry-meta inline-content greylinks"> <span>
 									<i class="fa fa-calendar highlight3 rightpadding_5" aria-hidden="true"></i>
 									<a href="blog-single-right.html">
@@ -65,7 +65,7 @@
 								</span> </div>
 									</li>
 								</ul>
-								
+
 
                               <?php }
 						            }

@@ -35,13 +35,15 @@ class Corporate extends MX_Controller {
         $data["slide_title"]="Qui sommes nous ?";
         $data["slide_link1"]="Accueil";
         $data["slide_link2"]="Qui sommes nous ?";
+        $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
 
         $this->load->view("pg_quiSommesNous",$data);
     }
 
     function nosMissions(){
 
-          $data["infos_generales"]=$this->corporate_model->infosGenerales();  
+          $data["infos_generales"]=$this->corporate_model->infosGenerales();
+          $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();  
           $data["slide_title"]="Nos missions";
           $data["slide_link1"]="Accueil";
           $data["slide_link2"]="Nos missions";
@@ -54,6 +56,7 @@ class Corporate extends MX_Controller {
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
            $data["notreequipe"]=$this->corporate_model->notreequipe();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Notre équipe";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Notre équipe";
@@ -65,6 +68,7 @@ class Corporate extends MX_Controller {
         function nosObjectifs(){
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Nos objectifs";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos objectifs";
@@ -76,6 +80,7 @@ class Corporate extends MX_Controller {
         function contact(){
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["contact"]=$this->corporate_model->contact();
            $data["slide_title"]="Contacts";
            $data["slide_link1"]="Accueil";
@@ -87,6 +92,7 @@ class Corporate extends MX_Controller {
         function photos(){
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["photo"]=$this->corporate_model->photo();
            $data["slide_title"]="Galerie Photo";
            $data["slide_link1"]="Accueil";
@@ -98,6 +104,7 @@ class Corporate extends MX_Controller {
         function videos(){
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["video"]=$this->corporate_model->video();
            $data["slide_title"]="Galerie vidéos";
            $data["slide_link1"]="Accueil";
@@ -110,11 +117,12 @@ class Corporate extends MX_Controller {
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
            $data["actualite"]=$this->corporate_model->actualite();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Actualités";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Actualités";
 
-            $this->load->view("pg_Actualites",$data);
+            $this->load->view("pg_actualites",$data);
         }
 
 
@@ -122,6 +130,7 @@ class Corporate extends MX_Controller {
 
            $data["infos_generales"]=$this->corporate_model->infosGenerales(); 
            $data["actualites_description"]=$this->corporate_model->actualites_description($id_actualite);
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Nos Actualités";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos Actualités";
@@ -135,6 +144,7 @@ class Corporate extends MX_Controller {
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
            $data["projets"]=$this->corporate_model->projets();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Nos projets";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos projets";
@@ -147,6 +157,7 @@ class Corporate extends MX_Controller {
 
            $data["infos_generales"]=$this->corporate_model->infosGenerales(); 
            $data["projet_description"]=$this->corporate_model->projet_description($id_projet);
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Nos Projets";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos Projets";
@@ -161,6 +172,7 @@ class Corporate extends MX_Controller {
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
            $data["activite"]=$this->corporate_model->activite();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Nos Activités";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos Activités";
@@ -173,6 +185,7 @@ class Corporate extends MX_Controller {
 
            $data["infos_generales"]=$this->corporate_model->infosGenerales(); 
            $data["activite_description"]=$this->corporate_model->activite_description($id_activite);
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Nos Activités";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos Activités";
@@ -186,6 +199,7 @@ class Corporate extends MX_Controller {
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
            $data["moduleformation"]=$this->corporate_model->moduleformation();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Nos modules de formations";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos modules de formations";
@@ -198,6 +212,7 @@ class Corporate extends MX_Controller {
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
            $data["cible"]=$this->corporate_model->cible();
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
            $data["slide_title"]="Nos cibles";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos cibles";

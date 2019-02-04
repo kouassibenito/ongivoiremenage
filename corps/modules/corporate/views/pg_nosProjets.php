@@ -110,6 +110,8 @@
 										<h3 class="entry-title small"> <a href="<?php echo base_url(); ?>corporate/nosProjet_description/<?php if(isset($info->id_projet)) echo $info->id_projet; ?>"><?php if(isset($info->nom_projet)) echo $info->nom_projet; ?></a> </h3>
 									</header>
 									<p class="content-3lines-ellipsis"><?php if(isset($info->description_court)) echo $info->description_court; ?> </p>
+
+									<a href="<?php echo base_url(); ?>corporate/nosProjet_description/<?php if(isset($info->id_projet)) echo $info->id_projet; ?>" class="more-link">Lire plus</a></p>
 								</div>
 							</article>
 						</div>

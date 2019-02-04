@@ -32,7 +32,7 @@
 											</ul>
 										</li>
 										<!-- eof pages -->
-										<li> <a href="services.html">Activités</a>
+										<li> <a href="#">Activités</a>
 											<ul>
 												<li> <a href="<?php echo base_url(); ?>corporate/nosActivites">Nos Activités</a> </li>
 												<li> <a href="<?php echo base_url(); ?>corporate/nosProjets">Nos projets</a> </li>
@@ -41,7 +41,7 @@
 										
 										
 										<!-- gallery -->
-										<li> <a href="gallery-regular.html">Formations</a>
+										<li> <a href="#">Formations</a>
 											<ul>
 												<!-- Gallery regular -->
 												<li> <a href="<?php echo base_url(); ?>corporate/modulesFormations">Modules de formation</a>
@@ -62,7 +62,7 @@
 										</li>
 										<!-- eof blog -->
 										<!-- shop -->
-										<li> <a href="shop.html">Médiathèque</a>
+										<li> <a href="#">Médiathèque</a>
 											<ul>
 												<li> <a href="<?php echo base_url(); ?>corporate/photos">Photos</a> </li>
 												<li> <a href="<?php echo base_url(); ?>corporate/videos">Vidéos</a> </li>

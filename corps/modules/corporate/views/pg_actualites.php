@@ -129,6 +129,9 @@
 											</header>
 											<div class="entry-content content-3lines-ellipsis">
 												<p><?php if(isset($info->description_court )) echo $info->description_court; ?></p>
+
+
+												<a href="<?php echo base_url(); ?>corporate/nosActualites_descrip_complete/<?php if(isset($info->id_actualite)) echo $info->id_actualite; ?>" class="more-link">Lire plus</a></p>
 											</div>
 										</div>
 									</article>
