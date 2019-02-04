@@ -118,10 +118,10 @@ class Corporate extends MX_Controller {
         }
 
 
-        function nosActualites_descrip_complete(){
+        function nosActualites_descrip_complete($id_actualite){
 
            $data["infos_generales"]=$this->corporate_model->infosGenerales(); 
-           $data["actualites_description"]=$this->corporate_model->actualites_description();
+           $data["actualites_description"]=$this->corporate_model->actualites_description($id_actualite);
            $data["slide_title"]="Nos Actualités";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos Actualités";

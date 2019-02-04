@@ -319,10 +319,8 @@ class Corporate_model extends CI_Model {
 
 
    //Page actualités description
-    function actualites_description(){
+    function actualites_description($id_actualite){
        
-      $id_actualite=1;
-      $this->db->limit(1);
       $this->db->where('id_actualite',$id_actualite);
       $this->db->select()->from('actualite');
        
@@ -473,6 +471,7 @@ class Corporate_model extends CI_Model {
 
    }
 
+//Page cible
    function cible(){
        
       $id_cible=1;

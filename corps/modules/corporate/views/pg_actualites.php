@@ -112,7 +112,7 @@
 										<div class="item-media entry-thumbnail"> <img src="<?php echo base_url(); ?>uploads/actualites/<?php if(isset($info->image)) echo $info->image; ?>" alt=""> </div>
 										<div class="item-content">
 											<header class="entry-header">
-												<h4 class="entry-title small"> <a href="<?php echo base_url(); ?>corporate/nosActualites_descrip_complete" rel="bookmark"><?php if(isset($info->titre)) echo $info->titre; ?></a> </h4>
+												<h4 class="entry-title small"> <a href="<?php echo base_url(); ?>corporate/nosActualites_descrip_complete/<?php if(isset($info->id_actualite)) echo $info->id_actualite; ?>" rel="bookmark"><?php if(isset($info->titre)) echo $info->titre; ?></a> </h4>
 												<div class="entry-meta inline-content greylinks"> <span>
 									<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
 									<a href="blog-single-right.html">
