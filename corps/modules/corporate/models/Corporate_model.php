@@ -430,10 +430,9 @@ class Corporate_model extends CI_Model {
 
 
 //Page activités description
-    function activite_description(){
+    function activite_description($id_activite){
        
-      $id_activite=1;
-      $this->db->limit(1);
+      
       $this->db->where('id_activite',$id_activite);
       $this->db->select()->from('activite');
        
@@ -470,6 +469,33 @@ class Corporate_model extends CI_Model {
         }
 
    }
+
+
+//Page projet description
+    function projet_description($id_projet){
+       
+      
+      $this->db->where('id_projet',$id_projet);
+      $this->db->select()->from('projet');
+       
+      $q = $this->db->get();
+
+        if($q->num_rows()>0)
+        {
+            foreach ($q->result() as $lign)
+            {
+                $data[]=$lign;
+            }
+            
+            return $data;
+        }
+
+   }
+
+
+
+
+
 
 //Page cible
    function cible(){

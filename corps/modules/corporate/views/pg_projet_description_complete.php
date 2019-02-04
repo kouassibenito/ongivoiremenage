@@ -28,6 +28,7 @@
 ?>
 
 
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -79,7 +80,6 @@
 	<div id="canvas">
 		<div id="box_wrapper">
 			<!-- template sections -->
-
 			<!-- headerTop -->
 			<?php include("tpl_headerTop.php"); ?> 
 			<!-- end headerTop -->
@@ -88,38 +88,35 @@
 			<?php include("tpl_header.php"); ?> 
 			<!-- end header -->
 
-			<!-- header -->
+			<!-- slide2 -->
 			<?php include("tpl_slide2.php"); ?> 
-			<!-- end header -->
-			
-			<section class="ls section_padding_top_100 section_padding_bottom_100 columns_margin_bottom_20">
+			<!-- end slide2 -->
+
+			<section class="ls section_padding_top_100 section_padding_bottom_100">
 				<div class="container">
-					<div class="row flex-wrap">
-                         
-                         <?php
+                       
+                       <?php
 
-						             if(isset($projets)){
+						if(isset($projet_description)){
 
-							            foreach ($projets as $info) { ?>
+							foreach ($projet_description as $info) { ?>
 
-						<div class="col-md-4 col-sm-6">
-							<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
-								<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/projet/<?php if(isset($info->image)) echo $info->image; ?>" alt=""> </div>
-								<div class="item-content">
-									<header class="entry-header">
-										<h3 class="entry-title small"> <a href="<?php echo base_url(); ?>corporate/nosProjet_description/<?php if(isset($info->id_projet)) echo $info->id_projet; ?>"><?php if(isset($info->nom_projet)) echo $info->nom_projet; ?></a> </h3>
-									</header>
-									<p class="content-3lines-ellipsis"><?php if(isset($info->description_court)) echo $info->description_court; ?> </p>
-								</div>
-							</article>
+
+					<div class="row">
+						<div class="col-xs-12"> <img src="<?php echo base_url(); ?>uploads/projet/<?php if(isset($info->image )) echo $info->image; ?>" alt="" class="alignright">
+							<h2 class="section_header topmargin_0"><?php if(isset($info->nom_projet)) echo $info->nom_projet; ?></h2>
+
+							<p><?php if(isset($info->description_complete)) echo $info->description_complete; ?></p>
+							
 						</div>
-
-						         <?php }
-						                 }
-
-						                 ?>
-
 					</div>
+
+                         <?php }
+						            }
+
+						            ?>
+
+
 				</div>
 			</section>
 

@@ -143,6 +143,20 @@ class Corporate extends MX_Controller {
         }
 
 
+        function nosProjet_description($id_projet){
+
+           $data["infos_generales"]=$this->corporate_model->infosGenerales(); 
+           $data["projet_description"]=$this->corporate_model->projet_description($id_projet);
+           $data["slide_title"]="Nos Projets";
+           $data["slide_link1"]="Accueil";
+           $data["slide_link2"]="Nos Projets";
+           $data["slide_link3"]="Projets description complète";
+
+            $this->load->view("pg_projet_description_complete",$data);
+        }
+
+
+
         function nosActivites(){
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();
@@ -155,10 +169,10 @@ class Corporate extends MX_Controller {
         }
 
 
-        function nosActivites_descrip_complete(){
+        function nosActivites_descrip_complete($id_activite){
 
            $data["infos_generales"]=$this->corporate_model->infosGenerales(); 
-           $data["activite_description"]=$this->corporate_model->activite_description();
+           $data["activite_description"]=$this->corporate_model->activite_description($id_activite);
            $data["slide_title"]="Nos Activités";
            $data["slide_link1"]="Accueil";
            $data["slide_link2"]="Nos Activités";

@@ -107,7 +107,7 @@
 								<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/activite/<?php if(isset($info->image)) echo $info->image; ?>" alt=""> </div>
 								<div class="item-content">
 									<header class="entry-header">
-										<h3 class="entry-title small"> <a href="<?php echo base_url(); ?>corporate/nosActivites_descrip_complete"><?php if(isset($info->nom_activite)) echo $info->nom_activite; ?></a> </h3>
+										<h3 class="entry-title small"> <a href="<?php echo base_url(); ?>corporate/nosActivites_descrip_complete/<?php if(isset($info->id_activite)) echo $info->id_activite; ?>"><?php if(isset($info->nom_activite)) echo $info->nom_activite; ?></a> </h3>
 									</header>
 									<p class="content-3lines-ellipsis"> <?php if(isset($info->description_court)) echo $info->description_court; ?> </p>
 								</div>
