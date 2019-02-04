@@ -33,43 +33,49 @@
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-6 col-xs-12 hidden-xs hidden-sm text-center">
+
+							
+
 							<div class="widget widget_recent_posts">
 								<h3 class="widget-title">Actualités récentes</h3>
+
+								<?php
+
+						          if(isset($actualites_limite2)){
+
+							       foreach ($actualites_limite2 as $info) { ?>
+
+
 								<ul class="list-unstyled greylinks">
+									
 									<li>
-										<p> <a href="blog-single-left.html">Leberkas beef kielbasa kevin turkey chicken alcatra. Ground round chicken.</a> </p>
+										<p> <a href="blog-single-left.html"><?php if(isset($info->description_court)) echo $info->description_court; ?></a> </p>
 										<div class="entry-meta inline-content greylinks"> <span>
 									<i class="fa fa-calendar highlight3 rightpadding_5" aria-hidden="true"></i>
 									<a href="blog-single-right.html">
 										<time datetime="2017-10-03T08:50:40+00:00">
-										17 jan, 2018</time>
+										<?php if(isset($info->date_actualite)) echo $info->date_actualite; ?></time>
 									</a>
 								</span> <span>
 									<i class="fa fa-user highlight3 rightpadding_5" aria-hidden="true"></i>
-									<a href="blog-right.html">Admin</a>
+									<a href="blog-right.html"><?php if(isset($info->auteur)) echo $info->auteur; ?></a>
 								</span> <span class="categories-links">
 									<i class="fa fa-tags highlight3 rightpadding_5" aria-hidden="true"></i>
-									<a href="blog-right.html">lgbt</a>
-								</span> </div>
-									</li>
-									<li>
-										<p> <a href="blog-single-left.html">Ball tip leberkas salami jowl ham pork  tri-tip tail.</a> </p>
-										<div class="entry-meta inline-content greylinks"> <span>
-									<i class="fa fa-calendar highlight3 rightpadding_5" aria-hidden="true"></i>
-									<a href="blog-single-right.html">
-										<time datetime="2017-10-03T08:50:40+00:00">
-										17 jan, 2018</time>
-									</a>
-								</span> <span>
-									<i class="fa fa-user highlight3 rightpadding_5" aria-hidden="true"></i>
-									<a href="blog-right.html">Admin</a>
-								</span> <span class="categories-links">
-									<i class="fa fa-tags highlight3 rightpadding_5" aria-hidden="true"></i>
-									<a href="blog-right.html">Serivces</a>
+									<a href="blog-right.html"><?php if(isset($info->cible)) echo $info->cible; ?></a>
 								</span> </div>
 									</li>
 								</ul>
+								
+
+                              <?php }
+						            }
+
+						            ?>
+
 							</div>
+
+                               
+
 						</div>
 					</div>
 				</div>
