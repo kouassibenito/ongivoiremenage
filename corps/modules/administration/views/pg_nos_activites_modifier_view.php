@@ -1,7 +1,7 @@
 <div class="page-header mt-0 shadow p-3">
 	<ol class="breadcrumb mb-sm-0">
-									<li class="breadcrumb-item"><a href="#">Forms</a></li>
-									<li class="breadcrumb-item active" aria-current="page">File Uploads</li>
+									<li class="breadcrumb-item"><a href="#">Formulaire</a></li>
+									
 								</ol>
 								<div class="btn-group mb-0">
 									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
@@ -38,13 +38,19 @@
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Désignation activité" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom activité" value="">
 													</div>
-													
+
+												</div>
+
+												<div class="col-md-6">
+												    <div class="form-group">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Description courte" value="">
+												    </div>
 												</div>
 												
 												<div class="col-md-12">
-													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Commentaire ..."></textarea>
+													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."></textarea>
 												</div>
 											</div>
 											<div class="row" style="margin-top: 20px;">

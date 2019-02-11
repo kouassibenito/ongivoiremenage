@@ -21,6 +21,7 @@ class Administration extends MX_Controller {
     function infosGenerales(){
 
         $data["pg_content"]="pg_infos_generales_view";
+        $data["infosGenerales"]=$this->administration_model->getInfo_generales();
         $this->load->view("main_view",$data);
     }
 
@@ -30,11 +31,48 @@ class Administration extends MX_Controller {
         $this->load->view("main_view",$data);
     }
 
+     function slidersModifier($id_slide){
+        
+        $data["info_slide_id"]=$this->administration_model->getInfo_sliders_id($id_slide);
+        $data["pg_content"]="pg_sliders_modifier_view";
+        $this->load->view("main_view",$data);
+    }
+
+    function supprim_slider($id_slide){
+     
+      if($this->administration_model->delete_slider($id_slide)){
+
+        redirect("administration/slidersListes");
+
+      }else{
+        
+        redirect("administration/slidersListes");
+      }
+
+   }
+
+
     function notreEquipe(){
 
         $data["pg_content"]="pg_notre_equipe_ajouter_view";
         $this->load->view("main_view",$data);
     }
+
+    function supprim_equipe($id_equipe){
+     
+      if($this->administration_model->delete_equipe($id_equipe)){
+
+        redirect("administration/notreEquipeListes");
+
+      }else{
+        
+        redirect("administration/notreEquipeListes");
+      }
+
+   }
+
+
+
 
     function nosActualites(){
 
@@ -43,16 +81,32 @@ class Administration extends MX_Controller {
     }
 
 
-    function nosProjets(){
 
-        $data["pg_content"]="pg_nos_projets_ajouter_view";
-        $this->load->view("main_view",$data);
-    }
+    function supprim_actualite($id_actualite){
+     
+      if($this->administration_model->delete_actualite($id_actualite)){
+
+        redirect("administration/nosActualitesListes");
+
+      }else{
+        
+        redirect("administration/nosActualitesListes");
+      }
+
+   }
+
 
 
     function nosActivites(){
 
         $data["pg_content"]="pg_nos_activites_ajouter_view";
+        $this->load->view("main_view",$data);
+    }
+
+
+    function nosProjets(){
+
+        $data["pg_content"]="pg_nos_projets_ajouter_view";
         $this->load->view("main_view",$data);
     }
 
@@ -86,11 +140,7 @@ class Administration extends MX_Controller {
 
 //modifier
 
-    function slidersModifier(){
-
-        $data["pg_content"]="pg_sliders_modifier_view";
-        $this->load->view("main_view",$data);
-    }
+   
 
     function notreEquipeModifier(){
 
@@ -98,8 +148,9 @@ class Administration extends MX_Controller {
         $this->load->view("main_view",$data);
     }
 
-    function nosActualitesModifier(){
-
+    function nosActualitesModifier($id_actualite){
+        
+        $data["info_actualite_id"]=$this->administration_model->getInfo_actualite_id($id_actualite);
         $data["pg_content"]="pg_nos_actualites_modifier_view";
         $this->load->view("main_view",$data);
     }
@@ -151,13 +202,15 @@ class Administration extends MX_Controller {
     
     function slidersListes(){
 
-        $data["pg_content"]="pg_sliders_liste_view";
+        $data["listeSliders"]=$this->administration_model->getInfo_sliders();
+        $data["pg_content"]="pg_sliders_liste_view";  
         $this->load->view("main_view",$data);
     }
 
     function notreEquipeListes(){
 
-          $data["pg_content"]="pg_notre_equipe_liste_view";
+        $data["listeEquipe"]=$this->administration_model->getInfo_equipe();
+        $data["pg_content"]="pg_notre_equipe_liste_view";
         $this->load->view("main_view",$data);
 
         
@@ -165,22 +218,24 @@ class Administration extends MX_Controller {
 
     function nosActualitesListes(){
 
-        
+        $data["listeActualite"]=$this->administration_model->getInfo_actualite();
         $data["pg_content"]="pg_nos_actualites_liste_view";
+        $this->load->view("main_view",$data);
+    }
+
+
+    function nosActivitesListes(){
+        
+        $data["listeActivite"]=$this->administration_model->getInfo_activite();
+        $data["pg_content"]="pg_nos_activites_listes_view";
         $this->load->view("main_view",$data);
     }
 
 
     function nosProjetsListes(){
 
-         $data["pg_content"]="pg_nos_projets_liste_view";
-        $this->load->view("main_view",$data);
-    }
-
-
-    function nosActivitesListes(){
-
-        $data["pg_content"]="pg_nos_activites_listes_view";
+        $data["listeProjets"]=$this->administration_model->getInfo_projets();
+        $data["pg_content"]="pg_nos_projets_liste_view";
         $this->load->view("main_view",$data);
     }
 
@@ -188,6 +243,7 @@ class Administration extends MX_Controller {
 
     function nosFormationsListes(){
 
+        $data["listeFormation"]=$this->administration_model->getInfo_formation();
         $data["pg_content"]="pg_nos_formations_liste_view";
         $this->load->view("main_view",$data);
     }
@@ -195,24 +251,33 @@ class Administration extends MX_Controller {
 
     function nosPhotosListes(){
 
-         $data["pg_content"]="pg_nos_photos_liste_view";
+        $data["listePhotos"]=$this->administration_model->getInfo_photos();
+        $data["pg_content"]="pg_nos_photos_liste_view";
         $this->load->view("main_view",$data);
     }
 
 
     function nosVideosListes(){
 
+        $data["listeVideos"]=$this->administration_model->getInfo_videos();
         $data["pg_content"]="pg_nos_videos_liste_view";
         $this->load->view("main_view",$data);
     }
 
     function adminListes(){
 
+        $data["listeAdmin"]=$this->administration_model->getInfo_admin();
         $data["pg_content"]="pg_administrateurs_liste_view";
         $this->load->view("main_view",$data);
     }
 
+    
 
+     function seDeconnecter(){
+
+        session_destroy();
+        redirect("login");
+    } 
 
 
 }

@@ -55,7 +55,7 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Paramètres</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="cards.html" class="slide-item">Gestion des administrateurs</a>
+									<a href="<?php echo base_url(); ?>administration/adminListes" class="slide-item">Gestion des administrateurs</a>
 								</li>
 								
 								

@@ -1,7 +1,7 @@
 <div class="page-header mt-0 shadow p-3">
 	<ol class="breadcrumb mb-sm-0">
-									<li class="breadcrumb-item"><a href="#">Forms</a></li>
-									<li class="breadcrumb-item active" aria-current="page">File Uploads</li>
+									<li class="breadcrumb-item"><a href="#">Formulaire d'ajout</a></li>
+									
 								</ol>
 								
 </div>
@@ -12,8 +12,26 @@
 										<div class="card-header">
 											<h2 class="mb-0">Ajouter/Modifier le logo</h2>
 										</div>
+
+										<?php
+
+											             if(isset($infosGenerales)){
+
+												            foreach ($infosGenerales as $info) {
+                                                              
+                                                              $logo=$info->logo;
+                                                              if(empty($logo) || $logo==""){
+
+                                                              	$img="1.jpg";
+
+                                                              }else{
+
+                                                                $img=$logo;
+                                                              }
+												             ?>
 										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
+											
+											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/logo/<?php echo $img; ?>" data-height="300"  />
 										</div>
 									</div>
 								</div>
@@ -29,63 +47,70 @@
 
 											<?php echo form_open('login'); ?> 
 											<div class="row">
+
+													
 												<div class="col-md-6">
 													 
                                                     <div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Libellé organisation" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Libellé organisation" value="<?php if(isset($info->libelle_organisation)) echo $info->libelle_organisation; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Pays" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Pays" value="<?php if(isset($info->pays)) echo $info->pays; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Ville" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Ville" value="<?php if(isset($info->ville)) echo $info->ville; ?>" >
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Commune" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Commune" value="<?php if(isset($info->commune)) echo $info->commune; ?>" >
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Email" value="" >
-													</div>
-
-													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Numéro de téléphone" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Email" value="<?php if(isset($info->email)) echo $info->email; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Horaire de travail" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Numéro de téléphone" value="<?php if(isset($info->telephone)) echo $info->telephone; ?>" >
+													</div>
+
+													<div class="form-group">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Horaire de travail" value="<?php if(isset($info->horaire_travail)) echo $info->horaire_travail; ?>" >
 													</div>
 												</div>
 												<div class="col-md-6">
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Copyright" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Copyright" value="<?php if(isset($info->copyright)) echo $info->copyright; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Facebook" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Facebook" value="<?php if(isset($info->facebook)) echo $info->facebook; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Twitter" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Twitter" value="<?php if(isset($info->twitter)) echo $info->twitter; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Instagram" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Instagram" value="<?php if(isset($info->instagram)) echo $info->instagram; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Youtube" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Youtube" value="<?php if(isset($info->youtube)) echo $info->youtube; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Slogan" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Slogan" value="<?php if(isset($info->slogan)) echo $info->slogan; ?>" >
 													</div>
 												</div>
 												<div class="col-md-12">
-													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Bref description ..."></textarea>
+													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Bref description ..."><?php if(isset($info->bref_description)) echo $info->bref_description; ?></textarea>
 												</div>
+
+												 <?php }
+								                    }
+
+								                 ?>
 
 												
 												

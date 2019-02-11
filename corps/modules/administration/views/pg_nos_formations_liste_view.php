@@ -30,27 +30,34 @@
 														<table class="table card-table table-dark table-vcenter text-nowrap  align-items-center">
 															<thead class="thead-dark">
 																<tr>
-																	<th>Id</th>
-																	<th>Project Name</th>
-																	<th>Team</th>
-																	<th>Feedback</th>
+																	<th>#</th>
+																	<th>Titre</th>
 																	<th>Date</th>
+																	<th>Auteur</th>
+																	<th>Desc 1</th>
+																	<th>Desc 2 </th>
 																	<th>Action</th>
 																</tr>
 															</thead>
 															<tbody>
+
+																<?php
+
+														             if(isset($listeFormation)){
+                                                                        $compt=0;
+															            foreach ($listeFormation as $info) {
+															            	$compt++;
+			                                                              
+															    ?>
+
 																<tr>
-																	<td>2345</td>
-																	<td class="text-sm font-weight-600">Megan Peters</td>
-																	<td><div class="avatar-group">
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/8.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/9.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/male/10.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/11.jpg"></a>
-																		</div>
-																	</td>
-																	<td>please check pricing Info </td>
-																	<td class="text-nowrap">July 13, 2018</td>
+																	<td><?php echo $compt; ?></td>
+																	<td><?php if(isset($info->titre)) echo substr($info->titre, 0,25)." ..."; ?></td>
+																	<td><?php if(isset($info->date_formation)) echo $info->date_formation; ?></td>
+																	<td><?php if(isset($info->auteur)) echo substr($info->auteur, 0,15)." ..."; ?> </td>
+																	<td class="text-nowrap"><?php if(isset($info->description_court)) echo substr($info->description_court, 0,15)." ..."; ?></td>
+																	<td><?php if(isset($info->description_complete)) echo substr($info->description_complete, 0,15)." ..."; ?> </td>
+																	
 																	<td class="text-nowrap">
 																		
 																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
@@ -58,86 +65,14 @@
 																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</button>
 																	</td>
 																</tr>
-																<tr>
-																	<td>4562</td>
-																	<td class="text-sm font-weight-600">Phil Vance</td>
-																	<td><div class="avatar-group">
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/8.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/9.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/male/10.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/11.jpg"></a>
-																		</div>
-																	</td>
-																	<td>New stock</td>
-																	<td class="text-nowrap">June 15, 2018</td>
-																	<td class="text-nowrap">
-																		
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
 
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</button>
+																<?php }
+												                    }
 
-																	</td>
-																</tr>
-																<tr>
-																	<td>8765</td>
-																	<td class="text-sm font-weight-600">Adam Sharp</td>
-																	<td><div class="avatar-group">
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/8.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/9.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/male/10.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/11.jpg"></a>
-																		</div>
-																	</td>
-																	<td>Daily updates</td>
-																	<td class="text-nowrap">July 8, 2018</td>
-																	<td class="text-nowrap">
-																		
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
+												                ?>
 
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</button>
 
-																	</td>
-																</tr>
-																<tr>
-																	<td>2665</td>
-																	<td class="text-sm font-weight-600">Samantha Slater</td>
-																	<td><div class="avatar-group">
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/8.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/9.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/male/10.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/11.jpg"></a>
-																		</div>
-																	</td>
-																	<td>available item list</td>
-																	<td class="text-nowrap">June 28, 2018</td>
-																	<td class="text-nowrap">
-																		
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
 
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</button>
-
-																	</td>
-																</tr>
-																<tr>
-																	<td>1245</td>
-																	<td class="text-sm font-weight-600">Joanne Nash</td>
-																	<td><div class="avatar-group">
-																			<a class="avatar avatar-sm" data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/8.jpg"></a>
-																			<a class="avatar avatar-sm" data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/9.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/male/10.jpg"></a>
-																			<a class="avatar avatar-sm"  data-toggle="tooltip" href="#"><img alt="Image placeholder" class="rounded-circle" src="<?php echo base_url(); ?>assets/administration/assets/img/faces/female/11.jpg"></a>
-																		</div>
-																	</td>
-																	<td>Provide Best Services</td>
-																	<td class="text-nowrap">July 2, 2018</td>
-																	<td class="text-nowrap">
-																		
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
-
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</button>
-
-																	</td>
-																</tr>
 															</tbody>
 														</table>
 													</div>

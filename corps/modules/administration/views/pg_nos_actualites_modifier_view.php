@@ -1,7 +1,7 @@
 <div class="page-header mt-0 shadow p-3">
 	<ol class="breadcrumb mb-sm-0">
-									<li class="breadcrumb-item"><a href="#">Forms</a></li>
-									<li class="breadcrumb-item active" aria-current="page">File Uploads</li>
+									<li class="breadcrumb-item"><a href="#">Formulaire</a></li>
+									
 								</ol>
 								<div class="btn-group mb-0">
 									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
@@ -21,8 +21,28 @@
 										<div class="card-header">
 											<h2 class="mb-0">Ajouter/Modifier une image</h2>
 										</div>
+
+										
+										<?php
+
+														             if(isset($info_actualite_id)){
+                                                                        
+															            foreach ($info_actualite_id as $info) {
+
+															            	 $imgs =$info->image;
+				                                                              if(empty($imgs) || $imgs==""){
+
+				                                                              	$img="1.jpg";
+
+				                                                              }else{
+
+				                                                                $img=$imgs;
+				                                                              }
+															            	
+			                                                              
+															    ?>
 										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
+											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/actualite/<?php if(isset($img)) echo $img; ?>" data-height="300"  />
 										</div>
 									</div>
 								</div>
@@ -38,13 +58,13 @@
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Date" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Date" value="<?php if(isset($info->date_actualite)) echo $info->date_actualite; ?>" >
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Auteur" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Auteur" value="<?php if(isset($info->auteur)) echo $info->auteur; ?>" >
 													</div>
 													
 												</div>
@@ -52,17 +72,17 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="La cible" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Cible" value="<?php if(isset($info->cible)) echo $info->cible; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Court description" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Description courte" value="<?php if(isset($info->description_court)) echo $info->description_court; ?>" >
 													</div>
 
 													
 												</div>
 												<div class="col-md-12">
-													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="La description complète ..."></textarea>
+													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."><?php if(isset($info->description_complete)) echo $info->description_complete; ?></textarea>
 												</div>
 
 												

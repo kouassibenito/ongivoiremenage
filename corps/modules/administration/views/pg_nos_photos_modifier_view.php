@@ -1,7 +1,7 @@
 <div class="page-header mt-0 shadow p-3">
 	<ol class="breadcrumb mb-sm-0">
-									<li class="breadcrumb-item"><a href="#">Forms</a></li>
-									<li class="breadcrumb-item active" aria-current="page">File Uploads</li>
+									<li class="breadcrumb-item"><a href="#">Formulaire</a></li>
+									
 								</ol>
 								<div class="btn-group mb-0">
 									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
@@ -12,6 +12,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i> Paramètres</a>
 									</div>
+								</div>
 								</div>
 </div>
 							<div class="row">

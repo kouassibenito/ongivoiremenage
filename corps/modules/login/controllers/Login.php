@@ -31,8 +31,7 @@ class Login extends MX_Controller {
 	                       
 	                        $data['id_admin']=$lign->id_administrateur;	                        
 	                        $data['nom_prenom']=$lign->nom_administrateur.' '.$lign->prenom_administrateur;
-	                        $data['id_profile']=$lign->id_profile;
-                            $data['status']=$lign->status;
+	                       
 	                         
 	                        
 	                        
@@ -44,10 +43,7 @@ class Login extends MX_Controller {
 
 	                                            'id_admin'  => $data['id_admin'],            
 	                                            'nom_prenom'=> $data['nom_prenom'],
-	                                            'id_profile'=> $data['id_profile'],
-	                                            'status'  => $data['status'],	                                            
-	                                            
-	                                            
+	                                                                                                             
 	                     );
 
 	                    $this->session->set_userdata($store_data_inSession);
@@ -60,86 +56,22 @@ class Login extends MX_Controller {
 	                   
 
 	                   $data["mot_de_passe_erronee"]="erreur"; 
-	                   $this->load->view('log_admins',$data);
+	                   $this->load->view('login_view',$data);
 	                   
 	               }
 
 	      }else
 	      {
-	        $this->load->view('log_admins');
+	        $this->load->view('login_view');
 
 	      }
 	}
-
-
-	public function vendeur()
-	{
-   	
-     $this->load->model('login_model');
-
-
-		$this->form_validation->set_rules('login', 'nom d\'utilisateur', 'trim|required');
-	    $this->form_validation->set_rules('pass', 'Mot de passe', 'trim|required');
-	   
-	      
-	    if($this->form_validation->run()) 
-	    {
-			    if($this->login_model->check_connection_vendeur($this->input->post('login'),$this->input->post('pass')))
-	               {
-	                   
-	                   $data['admin_informations']=$this->login_model->getInfo_vendeur($this->input->post('login'),$this->input->post('pass'));
-	                   
-	                   foreach ($data['admin_informations'] as $lign) {
-
-	                       
-	                        $data['id_admin']=$lign->id_fournisseur;	                        
-	                        $data['nom_prenom']=$lign->nom_fournisseur.' '.$lign->prenom_fournisseur;
-	                        $data['id_profile']=7;
-                            
-	                         
-	                        
-	                        
-
-
-	                   }
-
-	                    $store_data_inSession = array(
-
-	                                            'id_admin'  => $data['id_admin'],            
-	                                            'nom_prenom'=> $data['nom_prenom'],
-	                                            'id_profile'=> $data['id_profile'],
-	                                            	                                            
-	                                            
-	                                            
-	                     );
-
-	                    $this->session->set_userdata($store_data_inSession);
-	                    redirect('vendeur');
-
-                      
-	                   
-	               }
-	               else {
-	                   
-
-	                   $data["mot_de_passe_erronee"]="erreur"; 
-	                   $this->load->view('log_admins_vendeur',$data);
-	                   
-	               }
-
-	      }else
-	      {
-	        $this->load->view('log_admins_vendeur');
-
-	      }
-	}
-
 
 
 
 
 	
-   
+ 
 
   
 

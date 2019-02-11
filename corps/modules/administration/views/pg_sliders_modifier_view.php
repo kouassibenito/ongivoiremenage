@@ -1,7 +1,7 @@
 <div class="page-header mt-0 shadow p-3">
 	<ol class="breadcrumb mb-sm-0">
-									<li class="breadcrumb-item"><a href="#">Forms</a></li>
-									<li class="breadcrumb-item active" aria-current="page">File Uploads</li>
+									<li class="breadcrumb-item"><a href="#">Formulaire de modification</a></li>
+									
 								</ol>
 								<div class="btn-group mb-0">
 									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
@@ -15,14 +15,31 @@
 								</div>
 </div>
 							<div class="row">
-								
+									<?php
+
+														             if(isset($info_slide_id)){
+                                                                        
+															            foreach ($info_slide_id as $info) {
+
+															            	 $imgs =$info->img ;
+				                                                              if(empty($imgs) || $imgs==""){
+
+				                                                              	$img="1.jpg";
+
+				                                                              }else{
+
+				                                                                $img=$imgs;
+				                                                              }
+															            	
+			                                                              
+															    ?>
 								<div class="col-lg-12">
 									<div class="card shadow">
 										<div class="card-header">
 											<h2 class="mb-0">Ajouter/Modifier l'image Slider</h2>
 										</div>
 										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
+											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/sliders/<?php if(isset($img)) echo $img; ?>" data-height="300"  />
 										</div>
 									</div>
 								</div>
@@ -37,11 +54,13 @@
 										<div class="card-body">
 											<div class="row">
 												<div class="col-md-6">
+                                                    <input type="hidden" name="id_slide" value="<?php if(isset($info->id_slide)) echo $info->id_slide; ?>">
+
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 1" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 1" value="<?php if(isset($info->titre1)) echo $info->titre1; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 2" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 2" value="<?php if(isset($info->titre2)) echo $info->titre2; ?>" >
 													</div>
 													
 												</div>
@@ -49,12 +68,17 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 3" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 3" value="<?php if(isset($info->titre3)) echo $info->titre3; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 4" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 4" value="<?php if(isset($info->titre4)) echo $info->titre4; ?>" >
 													</div>
+
+													<?php }
+												                    }
+
+												                ?>
 
 													
 												</div>
