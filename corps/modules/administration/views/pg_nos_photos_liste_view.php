@@ -58,7 +58,7 @@
 																	
 																	<td class="text-nowrap">
 																		
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
+																		<a href="<?php echo base_url(); ?>administration/photoModifier/<?php if(isset($info->id_photo)) echo $info->id_photo; ?>"  class="btn btn-sm btn-primary mt-1 mb-1">Modifier</a>
 
 																		<a href="<?php echo base_url(); ?>administration/supprim_photo/<?php if(isset($info->id_photo)) echo $info->id_photo; ?>" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</a>
 																	</td>

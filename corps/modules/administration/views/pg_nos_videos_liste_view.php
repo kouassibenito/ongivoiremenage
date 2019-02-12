@@ -58,7 +58,7 @@
 																	
 																	<td class="text-nowrap">
 																		
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
+																		<a href="<?php echo base_url(); ?>administration/videoModifier/<?php if(isset($info->id_video)) echo $info->id_video; ?>"  class="btn btn-sm btn-primary mt-1 mb-1">Modifier</a>
 
 																		<a href="<?php echo base_url(); ?>administration/supprim_video/<?php if(isset($info->id_video)) echo $info->id_video; ?>" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</a>
 																	</td>

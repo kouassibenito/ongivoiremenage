@@ -58,7 +58,7 @@
 																	<td class="text-nowrap"><?php if(isset($info->fonction_administrateur)) echo substr($info->fonction_administrateur, 0,25)." ..."; ?></td>
 																	<td class="text-nowrap">
 																		
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
+																		<a href="<?php echo base_url(); ?>administration/modifierAdmin/<?php if(isset($info->id_administrateur)) echo $info->id_administrateur; ?>"  class="btn btn-sm btn-primary mt-1 mb-1">Modifier</a>
 
 																		<a href="<?php echo base_url(); ?>administration/supprim_admin/<?php if(isset($info->id_administrateur)) echo $info->id_administrateur; ?>" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</a>
 																	</td>

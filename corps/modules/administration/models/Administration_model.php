@@ -228,16 +228,48 @@ class Administration_model extends CI_Model {
       }
     }
 
+
+    function getInfo_formation_id($id_formation){
+   
+      $this->db->where('id_formation',$id_formation);
+      $q = $this->db->get('formation');
+      if($q->num_rows()>0)
+      {
+          foreach ($q->result() as $lign)
+          {
+              $data[]=$lign;
+          }
+          
+          return $data;
+      }
+    }
+
     function delete_formation($id_formation){
      
-      $this->db->delete('formation', array('id_formation' => $id_formation));
-      return True; 
+	      $this->db->delete('formation', array('id_formation' => $id_formation));
+	      return True; 
 
       }
 
 
     function getInfo_photos(){
 
+      $q = $this->db->get('photo');
+      if($q->num_rows()>0)
+      {
+          foreach ($q->result() as $lign)
+          {
+              $data[]=$lign;
+          }
+          
+          return $data;
+      }
+    }
+
+
+    function getInfo_photo_id($id_photo){
+   
+      $this->db->where('id_photo',$id_photo);
       $q = $this->db->get('photo');
       if($q->num_rows()>0)
       {
@@ -272,6 +304,22 @@ class Administration_model extends CI_Model {
       }
     }
 
+
+    function getInfo_video_id($id_video){
+   
+      $this->db->where('id_video',$id_video);
+      $q = $this->db->get('video');
+      if($q->num_rows()>0)
+      {
+          foreach ($q->result() as $lign)
+          {
+              $data[]=$lign;
+          }
+          
+          return $data;
+      }
+    }
+
     function delete_video($id_video){
      
       $this->db->delete('video', array('id_video' => $id_video));
@@ -282,6 +330,22 @@ class Administration_model extends CI_Model {
 
     function getInfo_admin(){
 
+      $q = $this->db->get('administrateur');
+      if($q->num_rows()>0)
+      {
+          foreach ($q->result() as $lign)
+          {
+              $data[]=$lign;
+          }
+          
+          return $data;
+      }
+    }
+
+
+    function getInfo_admin_id($id_administrateur){
+   
+      $this->db->where('id_administrateur',$id_administrateur);
       $q = $this->db->get('administrateur');
       if($q->num_rows()>0)
       {

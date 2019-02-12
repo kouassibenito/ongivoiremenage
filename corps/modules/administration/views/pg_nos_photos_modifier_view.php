@@ -16,6 +16,26 @@
 								</div>
 </div>
 							<div class="row">
+
+
+								<?php
+
+														             if(isset($info_photo_id)){
+                                                                        
+															            foreach ($info_photo_id as $info) {
+
+															            	 $imgs =$info->photo ;
+				                                                              if(empty($imgs) || $imgs==""){
+
+				                                                              	$photo="1.jpg";
+
+				                                                              }else{
+
+				                                                                $photo=$imgs;
+				                                                              }
+															            	
+			                                                              
+															    ?>
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
@@ -23,7 +43,7 @@
 											<h2 class="mb-0">Ajouter/Modifier l'image</h2>
 										</div>
 										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
+											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/photo/<?php if(isset($photo)) echo $photo; ?>" data-height="300"  />
 										</div>
 									</div>
 								</div>
@@ -38,8 +58,12 @@
 										<div class="card-body">
 											<div class="row">
 												<div class="col-md-6">
+
+													<input type="hidden" name="id_photo" value="<?php if(isset($info->id_photo)) echo $info->id_photo; ?>">
+
+
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre de la photo" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre de la photo" value="<?php if(isset($info->titre_photo)) echo $info->titre_photo; ?>">
 													</div>
 													
 												</div>
@@ -48,10 +72,13 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Catégorie de la photo" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Catégorie de la photo" value="<?php if(isset($info->id_categorie_photo)) echo $info->id_categorie_photo; ?>" >
 													</div>
 
-												
+													<?php }
+												                    }
+
+												                ?>
 												</div>
 											</div>
 											<div class="row" style="margin-top: 20px;">

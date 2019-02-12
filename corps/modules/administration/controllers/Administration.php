@@ -181,6 +181,15 @@ class Administration extends MX_Controller {
         $this->load->view("main_view",$data);
     }
 
+
+    function formationModifier($id_formation){
+        
+        $data["info_formation_id"]=$this->administration_model->getInfo_formation_id($id_formation);
+        $data["pg_content"]="pg_nos_formations_modifier_view";
+        $this->load->view("main_view",$data);
+    }
+
+
     function supprim_formation($id_formation){
      
       if($this->administration_model->delete_formation($id_formation)){
@@ -198,6 +207,14 @@ class Administration extends MX_Controller {
     function nosPhotos(){
 
         $data["pg_content"]="pg_nos_photos_ajouter_view";
+        $this->load->view("main_view",$data);
+    }
+
+
+    function photoModifier($id_photo){
+        
+        $data["info_photo_id"]=$this->administration_model->getInfo_photo_id($id_photo);
+        $data["pg_content"]="pg_nos_photos_modifier_view";
         $this->load->view("main_view",$data);
     }
 
@@ -222,6 +239,14 @@ class Administration extends MX_Controller {
         $this->load->view("main_view",$data);
     }
 
+
+    function videoModifier($id_video){
+        
+        $data["info_video_id"]=$this->administration_model->getInfo_video_id($id_video);
+        $data["pg_content"]="pg_nos_videos_modifier_view";
+        $this->load->view("main_view",$data);
+    }
+
     function supprim_video($id_video){
      
       if($this->administration_model->delete_video($id_video)){
@@ -240,6 +265,15 @@ class Administration extends MX_Controller {
         $data["pg_content"]="pg_administrateurs_ajouter_view";
         $this->load->view("main_view",$data);
     }
+
+
+    function modifierAdmin($id_administrateur){
+        
+       $data["info_admin_id"]=$this->administration_model->getInfo_admin_id($id_administrateur);
+        $data["pg_content"]="pg_administrateurs_modifier_view";
+        $this->load->view("main_view",$data);
+    }
+
 
     function supprim_admin($id_administrateur){
      

@@ -15,6 +15,26 @@
 								</div>
 </div>
 							<div class="row">
+
+
+								<?php
+
+														             if(isset($info_video_id)){
+                                                                        
+															            foreach ($info_video_id as $info) {
+
+															            	 $imgs =$info->video;
+				                                                              if(empty($imgs) || $imgs==""){
+
+				                                                              	$video="1.jpg";
+
+				                                                              }else{
+
+				                                                                $video=$imgs;
+				                                                              }
+															            	
+			                                                              
+															    ?>
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
@@ -22,7 +42,7 @@
 											<h2 class="mb-0">Ajouter/Modifier la vidéo</h2>
 										</div>
 										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
+											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/video/<?php if(isset($video)) echo $video; ?>" data-height="300"  />
 										</div>
 									</div>
 								</div>
@@ -37,8 +57,11 @@
 										<div class="card-body">
 											<div class="row">
 												<div class="col-md-6">
+
+													<input type="hidden" name="id_video" value="<?php if(isset($info->id_video)) echo $info->id_video; ?>">
+
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre de la vidéo" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre de la vidéo" value="<?php if(isset($info->titre_video)) echo $info->titre_video; ?>">
 													</div>
 													
 												</div>
@@ -47,11 +70,19 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Catégorie de la vidéo" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Catégorie de la vidéo" value="<?php if(isset($info->id_categorie_video)) echo $info->id_categorie_video; ?>" >
 													</div>
+
+													
 
 												
 												</div>
+
+												<?php }
+												                    }
+
+												                ?>
+												                
 											</div>
 											<div class="row" style="margin-top: 20px;">
                                                 <div class="col-md-12">

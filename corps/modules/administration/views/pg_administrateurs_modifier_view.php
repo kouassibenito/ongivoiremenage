@@ -6,15 +6,34 @@
 								<div class="btn-group mb-0">
 									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="#"><i class="fas fa-plus mr-2"></i>Add new Page</a>
-										<a class="dropdown-item" href="#"><i class="fas fa-eye mr-2"></i>View the page Details</a>
-										<a class="dropdown-item" href="#"><i class="fas fa-edit mr-2"></i>Edit Page</a>
+										<a class="dropdown-item" href="<?php echo base_url(); ?>administration/adminListes"><i class="fas fa-eye mr-2"></i>Voir la liste des administrateurs</a>
+										
+										
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i> Settings</a>
+										<a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i> Paramètres</a>
 									</div>
 								</div>
-</div>
+                             </div>
 							<div class="row">
+
+								<?php
+
+														             if(isset($info_admin_id)){
+                                                                        
+															            foreach ($info_admin_id as $info) {
+
+															            	 $imgs =$info->image ;
+				                                                              if(empty($imgs) || $imgs==""){
+
+				                                                              	$image="1.jpg";
+
+				                                                              }else{
+
+				                                                                $image=$imgs;
+				                                                              }
+															            	
+			                                                              
+															    ?>
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
@@ -22,7 +41,7 @@
 											<h2 class="mb-0">Ajouter/Modifier une image</h2>
 										</div>
 										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
+											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/img_admin/<?php if(isset($image)) echo $image; ?>" data-height="300"  />
 										</div>
 									</div>
 								</div>
@@ -37,42 +56,47 @@
 										<div class="card-body">
 											<div class="row">
 												<div class="col-md-6">
+
+													<input type="hidden" name="id_administrateur" value="<?php if(isset($info->id_administrateur)) echo $info->id_administrateur; ?>">
+
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom" value="<?php if(isset($info->nom_administrateur)) echo $info->nom_administrateur; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Date" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Prénoms" value="<?php if(isset($info->prenom_administrateur)) echo $info->prenom_administrateur; ?>" >
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Auteur" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="E-mail" value="<?php if(isset($info->email_administrateur)) echo $info->email_administrateur; ?>" >
 													</div>
 													
 												</div>
-												<div class="col-md-6">
-													
 
-													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="La cible" value="" >
+                                                <div class="col-md-6">
+												  <div class="form-group">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Téléphone" value="<?php if(isset($info->telephone_administrateur)) echo $info->telephone_administrateur; ?>" >
 													</div>
 
+
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Court description" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Fonction" value="<?php if(isset($info->fonction_administrateur)) echo $info->fonction_administrateur; ?>" >
 													</div>
 
-													
 												</div>
-												<div class="col-md-12">
-													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="La description complète ..."></textarea>
-												</div>
+		
+											</div>
 
 												
-												
+												?php }
+												                    }
+
+												                ?>
+
 											</div>
 											<div class="row" style="margin-top: 20px;">
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Valider</a></li>
+															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</a></li>
 														</ul>
 												</div>
 											</div>
