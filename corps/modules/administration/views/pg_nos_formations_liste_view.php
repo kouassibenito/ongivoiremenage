@@ -62,7 +62,7 @@
 																		
 																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
 
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</button>
+																		<a href="<?php echo base_url(); ?>administration/supprim_formation/<?php if(isset($info->id_formation)) echo $info->id_formation; ?>" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</a>
 																	</td>
 																</tr>
 

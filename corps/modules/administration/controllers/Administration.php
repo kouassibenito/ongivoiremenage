@@ -104,6 +104,21 @@ class Administration extends MX_Controller {
     }
 
 
+    function supprim_activites($id_activite){
+     
+      if($this->administration_model->delete_activite($id_activite)){
+
+        redirect("administration/nosActivitesListes");
+
+      }else{
+        
+        redirect("administration/nosActivitesListes");
+      }
+
+   }
+
+
+
     function nosProjets(){
 
         $data["pg_content"]="pg_nos_projets_ajouter_view";
@@ -111,11 +126,39 @@ class Administration extends MX_Controller {
     }
 
 
+    function supprim_projet($id_projet){
+     
+      if($this->administration_model->delete_projet($id_projet)){
+
+        redirect("administration/nosProjetsListes");
+
+      }else{
+        
+        redirect("administration/nosProjetsListes");
+      }
+
+   }
+
+
+
     function nosFormations(){
 
         $data["pg_content"]="pg_nos_formations_ajouter_view";
         $this->load->view("main_view",$data);
     }
+
+    function supprim_formation($id_formation){
+     
+      if($this->administration_model->delete_formation($id_formation)){
+
+        redirect("administration/nosFormationsListes");
+
+      }else{
+        
+        redirect("administration/nosFormationsListes");
+      }
+
+   }
 
 
     function nosPhotos(){
@@ -125,17 +168,57 @@ class Administration extends MX_Controller {
     }
 
 
+    function supprim_photo($id_photo){
+     
+      if($this->administration_model->delete_photo($id_photo)){
+
+        redirect("administration/nosPhotosListes");
+
+      }else{
+        
+        redirect("administration/nosPhotosListes");
+      }
+
+   }
+
+
     function nosVideos(){
 
         $data["pg_content"]="pg_nos_videos_ajouter_view";
         $this->load->view("main_view",$data);
     }
 
+    function supprim_video($id_video){
+     
+      if($this->administration_model->delete_video($id_video)){
+
+        redirect("administration/nosVideosListes");
+
+      }else{
+        
+        redirect("administration/nosVideosListes");
+      }
+
+   }
+
     function adminAjouter(){
 
         $data["pg_content"]="pg_administrateurs_ajouter_view";
         $this->load->view("main_view",$data);
     }
+
+    function supprim_admin($id_administrateur){
+     
+      if($this->administration_model->delete_admin($id_administrateur)){
+
+        redirect("administration/adminListes");
+
+      }else{
+        
+        redirect("administration/adminListes");
+      }
+
+   }
 
 
 //modifier

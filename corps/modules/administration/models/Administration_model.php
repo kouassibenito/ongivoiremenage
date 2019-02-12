@@ -138,6 +138,12 @@ class Administration_model extends CI_Model {
     }
 
 
+    function delete_activite($id_activite){
+     
+      $this->db->delete('activite', array('id_activite' => $id_activite));
+      return True; 
+       }
+
     function getInfo_projets(){
 
       $q = $this->db->get('projet');
@@ -152,6 +158,12 @@ class Administration_model extends CI_Model {
       }
     }
 
+    function delete_projet($id_projet){
+     
+      $this->db->delete('projet', array('id_projet' => $id_projet));
+      return True; 
+
+      }
 
     function getInfo_formation(){
 
@@ -166,6 +178,13 @@ class Administration_model extends CI_Model {
           return $data;
       }
     }
+
+    function delete_formation($id_formation){
+     
+      $this->db->delete('formation', array('id_formation' => $id_formation));
+      return True; 
+
+      }
 
 
     function getInfo_photos(){
@@ -182,6 +201,13 @@ class Administration_model extends CI_Model {
       }
     }
 
+    function delete_photo($id_photo){
+     
+      $this->db->delete('photo', array('id_photo' => $id_photo));
+      return True; 
+
+      }
+
 
      function getInfo_videos(){
 
@@ -197,6 +223,13 @@ class Administration_model extends CI_Model {
       }
     }
 
+    function delete_video($id_video){
+     
+      $this->db->delete('video', array('id_video' => $id_video));
+      return True; 
+
+      }
+
 
     function getInfo_admin(){
 
@@ -211,6 +244,13 @@ class Administration_model extends CI_Model {
           return $data;
       }
     }
+
+    function delete_admin($id_administrateur){
+     
+      $this->db->delete('administrateur', array('id_administrateur' => $id_administrateur));
+      return True; 
+
+      }
 
 
 
