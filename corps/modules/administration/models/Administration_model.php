@@ -77,6 +77,22 @@ class Administration_model extends CI_Model {
     }
 
 
+     function getInfo_equipe_id($id_equipe){
+      
+      $this->db->where('id_equipe',$id_equipe);
+      $q = $this->db->get('equipe');
+      if($q->num_rows()>0)
+      {
+          foreach ($q->result() as $lign)
+          {
+              $data[]=$lign;
+          }
+          
+          return $data;
+      }
+    }
+
+
     function delete_equipe($id_equipe){
      
       $this->db->delete('equipe', array('id_equipe' => $id_equipe));
@@ -138,6 +154,22 @@ class Administration_model extends CI_Model {
     }
 
 
+    function getInfo_activite_id($id_activite){
+      
+      $this->db->where('id_activite',$id_activite);
+      $q = $this->db->get('activite');
+      if($q->num_rows()>0)
+      {
+          foreach ($q->result() as $lign)
+          {
+              $data[]=$lign;
+          }
+          
+          return $data;
+      }
+    }
+
+
     function delete_activite($id_activite){
      
       $this->db->delete('activite', array('id_activite' => $id_activite));
@@ -157,6 +189,23 @@ class Administration_model extends CI_Model {
           return $data;
       }
     }
+
+
+    function getInfo_projet_id($id_projet){
+      
+      $this->db->where('id_projet',$id_projet);
+      $q = $this->db->get('projet');
+      if($q->num_rows()>0)
+      {
+          foreach ($q->result() as $lign)
+          {
+              $data[]=$lign;
+          }
+          
+          return $data;
+      }
+    }
+    
 
     function delete_projet($id_projet){
      

@@ -15,6 +15,25 @@
 								</div>
                             </div>
 							<div class="row">
+
+								<?php
+
+														             if(isset($info_activite_id)){
+                                                                        
+															            foreach ($info_activite_id as $info) {
+
+															            	 $imgs =$info->image ;
+				                                                              if(empty($imgs) || $imgs==""){
+
+				                                                              	$image="1.jpg";
+
+				                                                              }else{
+
+				                                                                $image=$imgs;
+				                                                              }
+															            	
+			                                                              
+															    ?>
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
@@ -22,7 +41,7 @@
 											<h2 class="mb-0">Ajouter/Modifier l'image de l'activité</h2>
 										</div>
 										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
+											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/activite/<?php if(isset($image)) echo $image; ?>" data-height="300"  />
 										</div>
 									</div>
 								</div>
@@ -37,21 +56,35 @@
 										<div class="card-body">
 											<div class="row">
 												<div class="col-md-6">
+
+
+													<input type="hidden" name="id_activite" value="<?php if(isset($info->id_activite)) echo $info->id_activite; ?>">
+
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom activité" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom activité" value="<?php if(isset($info->nom_activite)) echo $info->nom_activite; ?>">
 													</div>
 
 												</div>
 
 												<div class="col-md-6">
 												    <div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Description courte" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Description courte" value="<?php if(isset($info->description_court)) echo $info->description_court; ?>">
 												    </div>
 												</div>
 												
 												<div class="col-md-12">
-													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."></textarea>
+													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."><?php if(isset($info->description_complete)) echo $info->description_complete; ?></textarea>
+
+
+
 												</div>
+
+
+												<?php }
+												                    }
+
+												                ?>
+
 											</div>
 											<div class="row" style="margin-top: 20px;">
                                                 <div class="col-md-12">

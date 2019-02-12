@@ -58,6 +58,15 @@ class Administration extends MX_Controller {
         $this->load->view("main_view",$data);
     }
 
+
+    function equipeModifier($id_equipe){
+        
+        $data["info_equipe_id"]=$this->administration_model->getInfo_equipe_id($id_equipe);
+        $data["pg_content"]="pg_notre_equipe_modifier_view";
+        $this->load->view("main_view",$data);
+    }
+
+
     function supprim_equipe($id_equipe){
      
       if($this->administration_model->delete_equipe($id_equipe)){
@@ -79,6 +88,15 @@ class Administration extends MX_Controller {
         $data["pg_content"]="pg_nos_actualites_ajouter_view";
         $this->load->view("main_view",$data);
     }
+
+
+    function nosActualitesModifier($id_actualite){
+        
+        $data["info_actualite_id"]=$this->administration_model->getInfo_actualite_id($id_actualite);
+        $data["pg_content"]="pg_nos_actualites_modifier_view";
+        $this->load->view("main_view",$data);
+    }
+
 
 
 
@@ -104,6 +122,15 @@ class Administration extends MX_Controller {
     }
 
 
+    function activiteModifier($id_activite){
+        
+        $data["info_activite_id"]=$this->administration_model->getInfo_activite_id($id_activite);
+        $data["pg_content"]="pg_nos_activites_modifier_view";
+        $this->load->view("main_view",$data);
+    }
+
+
+
     function supprim_activites($id_activite){
      
       if($this->administration_model->delete_activite($id_activite)){
@@ -122,6 +149,13 @@ class Administration extends MX_Controller {
     function nosProjets(){
 
         $data["pg_content"]="pg_nos_projets_ajouter_view";
+        $this->load->view("main_view",$data);
+    }
+
+    function projetModifier($id_projet){
+        
+        $data["info_projet_id"]=$this->administration_model->getInfo_projet_id($id_projet);
+        $data["pg_content"]="pg_nos_projets_modifier_view";
         $this->load->view("main_view",$data);
     }
 
@@ -231,13 +265,7 @@ class Administration extends MX_Controller {
         $this->load->view("main_view",$data);
     }
 
-    function nosActualitesModifier($id_actualite){
-        
-        $data["info_actualite_id"]=$this->administration_model->getInfo_actualite_id($id_actualite);
-        $data["pg_content"]="pg_nos_actualites_modifier_view";
-        $this->load->view("main_view",$data);
-    }
-
+    
 
     function nosProjetsModifier(){
 

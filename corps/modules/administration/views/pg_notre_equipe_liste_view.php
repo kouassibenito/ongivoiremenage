@@ -59,7 +59,7 @@
 																	<td><?php if(isset($info->twitter)) echo substr($info->twitter, 0,15)." ..."; ?></td>
 																	<td class="text-nowrap">
 																		
-																		<a href="<?php echo base_url(); ?>administration/notreEquipeModifier/<?php if(isset($info->id_equipe)) echo $info->id_equipe; ?>"  class="btn btn-sm btn-primary mt-1 mb-1">Modifier</a>
+																		<a href="<?php echo base_url(); ?>administration/equipeModifier/<?php if(isset($info->id_equipe)) echo $info->id_equipe; ?>"  class="btn btn-sm btn-primary mt-1 mb-1">Modifier</a>
 
 																		
 

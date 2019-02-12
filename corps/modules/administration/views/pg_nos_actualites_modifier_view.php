@@ -32,17 +32,17 @@
 															            	 $imgs =$info->image;
 				                                                              if(empty($imgs) || $imgs==""){
 
-				                                                              	$img="1.jpg";
+				                                                              	$image="1.jpg";
 
 				                                                              }else{
 
-				                                                                $img=$imgs;
+				                                                                $image=$imgs;
 				                                                              }
 															            	
 			                                                              
 															    ?>
 										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/actualite/<?php if(isset($img)) echo $img; ?>" data-height="300"  />
+											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/actualite/<?php if(isset($image)) echo $image; ?>" data-height="300"  />
 										</div>
 									</div>
 								</div>
@@ -57,6 +57,9 @@
 										<div class="card-body">
 											<div class="row">
 												<div class="col-md-6">
+
+													<input type="hidden" name="id_actualite" value="<?php if(isset($info->id_actualite)) echo $info->id_actualite; ?>">
+
 													<div class="form-group">
 														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>">
 													</div>

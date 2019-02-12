@@ -57,7 +57,7 @@
 																	<td><?php if(isset($info->description_complete)) echo substr($info->description_complete, 0,25)." ..."; ?></td>
 																	<td class="text-nowrap">
 																		
-																		<button type="button" class="btn btn-sm btn-primary mt-1 mb-1">Modifier</button>
+																		<a href="<?php echo base_url(); ?>administration/projetModifier/<?php if(isset($info->id_projet)) echo $info->id_projet; ?>"  class="btn btn-sm btn-primary mt-1 mb-1">Modifier</a>
 
 																		<a href="<?php echo base_url(); ?>administration/supprim_projet/<?php if(isset($info->id_projet)) echo $info->id_projet; ?>" class="btn btn-sm btn-primary mt-1 mb-1">Supprimer</a>
 																	</td>

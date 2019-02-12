@@ -1,7 +1,7 @@
 <div class="page-header mt-0 shadow p-3">
 	<ol class="breadcrumb mb-sm-0">
-									<li class="breadcrumb-item"><a href="#">Forms</a></li>
-									<li class="breadcrumb-item active" aria-current="page">File Uploads</li>
+									<li class="breadcrumb-item"><a href="#">Formulaire</a></li>
+									
 								</ol>
 								<div class="btn-group mb-0">
 									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
@@ -15,6 +15,26 @@
 								</div>
 </div>
 							<div class="row">
+
+
+								<?php
+
+														             if(isset($info_equipe_id)){
+                                                                        
+															            foreach ($info_equipe_id as $info) {
+
+															            	 $imgs =$info->photo ;
+				                                                              if(empty($imgs) || $imgs==""){
+
+				                                                              	$photo="1.jpg";
+
+				                                                              }else{
+
+				                                                                $photo=$imgs;
+				                                                              }
+															            	
+			                                                              
+															    ?>
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
@@ -22,10 +42,12 @@
 											<h2 class="mb-0">Ajouter/Modifier une image</h2>
 										</div>
 										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
+											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/equipe/<?php if(isset($photo)) echo $photo; ?>" data-height="300"  />
 										</div>
 									</div>
 								</div>
+
+								
                                     
 							</div>
 							<div class="row">
@@ -37,11 +59,14 @@
 										<div class="card-body">
 											<div class="row">
 												<div class="col-md-6">
+
+													<input type="hidden" name="id_equipe" value="<?php if(isset($info->id_equipe)) echo $info->id_equipe; ?>">
+
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom complet" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom complet" value="<?php if(isset($info->nom)) echo $info->nom; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>" >
 													</div>
 													
 												</div>
@@ -49,11 +74,11 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Facebook" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Facebook" value="<?php if(isset($info->facebook)) echo $info->facebook; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Twitter" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Twitter" value="<?php if(isset($info->twitter)) echo $info->twitter; ?>" >
 													</div>
 
 													
@@ -61,6 +86,13 @@
 											
 												
 											</div>
+
+
+											<?php }
+												                    }
+
+												                ?>
+
 											<div class="row" style="margin-top: 20px;">
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
