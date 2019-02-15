@@ -25,7 +25,7 @@
 							<div class="widget widget_text">
 								<h3 class="widget-title">Nos Contacts</h3>
 								<ul class="list-unstyled greylinks">
-									<li class="media"> <i class="fa fa-map-marker highlight rightpadding_5" aria-hidden="true"></i><?php if(isset($pays)) echo $pays; ?>, <?php if(isset($ville )) echo $ville; ?>, <?php if(isset($commune )) echo $commune; ?></li>
+									<li class="media"> <i class="fa fa-map-marker highlight rightpadding_5" aria-hidden="true"></i><?php if(isset($pays)) echo $pays; ?>, <?php if(isset($ville )) echo $ville; ?> <?php //if(isset($commune )) echo $commune; ?></li>
 									<li class="media"> <i class="fa fa-phone highlight rightpadding_5" aria-hidden="true"></i><?php if(isset($telephone )) echo $telephone; ?> </li>
 									<li class="media"> <i class="fa fa-pencil highlight rightpadding_5" aria-hidden="true"></i> <a href="mailto:info@ongivoiremenage.org"><?php if(isset($email )) echo $email; ?></a> </li>
 									<li class="media"> <i class="fa fa-clock-o highlight rightpadding_5" aria-hidden="true"></i><?php if(isset($horaire_travail)) echo $horaire_travail; ?> </li>

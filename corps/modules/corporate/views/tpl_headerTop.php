@@ -14,7 +14,7 @@
 							<div id="topline-animation-wrap">
 								<div id="topline-hide" class="inline-content big-spacing"> <span class="hidden-xs">
 							<i class="fa fa-map-marker highlight3 rightpadding_5" aria-hidden="true"></i>
-							<?php if(isset($pays)) echo $pays; ?>, <?php if(isset($ville )) echo $ville; ?>, <?php if(isset($commune )) echo $commune; ?>
+							<?php if(isset($pays)) echo $pays; ?>, <?php if(isset($ville )) echo $ville; ?><?php //if(isset($commune )) echo $commune; ?>
 						</span> <span class="greylinks hidden-xs">
 							<i class="fa fa-pencil highlight3 rightpadding_5" aria-hidden="true"></i>
 							<a href="mailto:info@ongivoiremenage.org"><?php if(isset($email )) echo $email; ?></a>
