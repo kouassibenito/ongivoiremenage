@@ -208,6 +208,20 @@ class Corporate extends MX_Controller {
         }
 
 
+        function moduleFormations_descrip_complete($id_formation){
+
+           $data["infos_generales"]=$this->corporate_model->infosGenerales(); 
+           $data["formation_description"]=$this->corporate_model->formation_description($id_formation);
+           $data["actualites_limite2"]=$this->corporate_model->actualites_limite2();
+           $data["slide_title"]="Nos modules de formations";
+           $data["slide_link1"]="Accueil";
+           $data["slide_link2"]="Nos modules de formations";
+           $data["slide_link3"]="Formation description complète";
+
+            $this->load->view("pg_formation_description_complete",$data);
+        }
+
+
         function nosCibles(){
            
            $data["infos_generales"]=$this->corporate_model->infosGenerales();

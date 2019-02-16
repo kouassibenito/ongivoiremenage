@@ -406,6 +406,29 @@ class Corporate_model extends CI_Model {
    }
 
 
+   //Page nos modules de formation description
+    function formation_description($id_formation){
+       
+      
+      $this->db->where('id_formation',$id_formation);
+      $this->db->select()->from('formation');
+       
+      $q = $this->db->get();
+
+        if($q->num_rows()>0)
+        {
+            foreach ($q->result() as $lign)
+            {
+                $data[]=$lign;
+            }
+            
+            return $data;
+        }
+
+   }
+
+
+
 //Page activités
     function activite(){
        
