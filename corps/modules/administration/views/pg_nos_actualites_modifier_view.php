@@ -88,6 +88,12 @@
 													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."><?php if(isset($info->description_complete)) echo $info->description_complete; ?></textarea>
 												</div>
 
+												<?php }
+												                    }
+
+												                ?>
+
+
 												
 												
 											</div>

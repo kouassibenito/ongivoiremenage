@@ -15,6 +15,8 @@
 								</div>
 </div>
 							<div class="row">
+									<?php echo form_open_multipart("administration/slidersModifier/$id_slide"); ?> 
+
 									<?php
 
 														             if(isset($info_slide_id)){
@@ -57,10 +59,10 @@
                                                     <input type="hidden" name="id_slide" value="<?php if(isset($info->id_slide)) echo $info->id_slide; ?>">
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 1" value="<?php if(isset($info->titre1)) echo $info->titre1; ?>">
+														<input type="text" class="form-control is-invalid state-invalid" name="titre1" placeholder="Titre 1" value="<?php if(isset($info->titre1)) echo $info->titre1; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 2" value="<?php if(isset($info->titre2)) echo $info->titre2; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="titre2" placeholder="Titre 2" value="<?php if(isset($info->titre2)) echo $info->titre2; ?>" >
 													</div>
 													
 												</div>
@@ -68,11 +70,11 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 3" value="<?php if(isset($info->titre3)) echo $info->titre3; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="titre3" placeholder="Titre 3" value="<?php if(isset($info->titre3)) echo $info->titre3; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre 4" value="<?php if(isset($info->titre4)) echo $info->titre4; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="titre4" placeholder="Titre 4" value="<?php if(isset($info->titre4)) echo $info->titre4; ?>" >
 													</div>
 
 													<?php }
@@ -88,10 +90,11 @@
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</button></li>
 														</ul>
 												</div>
 											</div>
+											<?php echo form_close(); ?>
 										</div>
 									</div>
 									

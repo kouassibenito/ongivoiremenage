@@ -25,6 +25,14 @@ class Administration_model extends CI_Model {
       }
     }
 
+     function modifier_infos_generale($id_infos,$data){
+       
+        $this->db->where('id_infos',$id_infos);
+        $this->db->update('infos_generales', $data);
+        return True;
+
+   }
+
      function getInfo_sliders(){
 
       $q = $this->db->get('sliders');
@@ -38,6 +46,21 @@ class Administration_model extends CI_Model {
           return $data;
       }
     }
+
+     function ajoutSlider($data){
+       
+     $this->db->insert('sliders', $data); 
+     return True;
+
+   }
+
+   function modifier_sliders($id_slide,$data){
+       
+        $this->db->where('id_slide',$id_slide);
+        $this->db->update('sliders', $data);
+        return True;
+
+   }
 
      function getInfo_sliders_id($id_slide){
    
