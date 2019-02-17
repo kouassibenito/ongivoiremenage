@@ -300,8 +300,77 @@ class Administration extends MX_Controller {
 
     function notreEquipe(){
 
+
+
+        $this->form_validation->set_rules('nom', 'Nom', 'trim');
+        $this->form_validation->set_rules('titre', 'Titre', 'trim');
+        $this->form_validation->set_rules('facebook', 'Facebook', 'trim');
+        $this->form_validation->set_rules('twitter', 'Twitter', 'trim');
+       
+        
+        if ($this->form_validation->run()){
+
+            $nom=$this->input->post('nom');
+            $titre=$this->input->post('titre');
+            $facebook=$this->input->post('facebook');
+            $twitter=$this->input->post('twitter');
+            
+
+             $data=array( 
+                          'nom' =>$nom,
+                          'titre' =>$titre,
+                          'facebook' =>$facebook,
+                          'twitter' =>$twitter,
+                          
+                                
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+            
+
+             $this->administration_model->ajoutEquipe($data);
+            
+
+              $data["listeEquipe"]=$this->administration_model->getInfo_equipe();
+              $data["pg_content"]="pg_notre_equipe_ajouter_view";
+              $this->load->view("main_view",$data);
+
+
+
+            
+
+        }else{
+
+
         $data["pg_content"]="pg_notre_equipe_ajouter_view";
         $this->load->view("main_view",$data);
+       
+
+       }
+
+
+        
     }
 
 
@@ -331,8 +400,78 @@ class Administration extends MX_Controller {
 
     function nosActualites(){
 
+        $this->form_validation->set_rules('titre', 'Titre', 'trim');
+        $this->form_validation->set_rules('date_actualite', 'date actualite', 'trim');
+        $this->form_validation->set_rules('auteur', 'auteur', 'trim');
+        $this->form_validation->set_rules('cible', 'cible', 'trim');
+        $this->form_validation->set_rules('description_court', 'description courte', 'trim');
+        $this->form_validation->set_rules('description_complete', 'description complète', 'trim');
+       
+        
+        if ($this->form_validation->run()){
+
+            $titre=$this->input->post('titre');
+            $date_actualite=$this->input->post('date_actualite');
+            $auteur=$this->input->post('auteur');
+            $cible=$this->input->post('cible');
+            $description_court=$this->input->post('description_court');
+            $description_complete=$this->input->post('description_complete');
+            
+
+             $data=array( 
+                          'titre' =>$titre,
+                          'date_actualite' =>$date_actualite,
+                          'auteur' =>$auteur,
+                          'cible' =>$cible,
+                          'description_court' =>$description_court,
+                          'description_complete' =>$description_complete,
+
+                          
+                                
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+            
+
+             $this->administration_model->ajoutActualite($data);
+            
+
+              $data["listeActualite"]=$this->administration_model->getInfo_actualite();
+              $data["pg_content"]="pg_nos_actualites_ajouter_view";
+              $this->load->view("main_view",$data);
+
+
+
+            
+
+        }else{
+
+
         $data["pg_content"]="pg_nos_actualites_ajouter_view";
         $this->load->view("main_view",$data);
+
+        }
     }
 
 
@@ -363,8 +502,73 @@ class Administration extends MX_Controller {
 
     function nosActivites(){
 
+        $this->form_validation->set_rules('nom_activite', 'Nom activité', 'trim');
+        $this->form_validation->set_rules('description_court', 'description courte', 'trim');
+        $this->form_validation->set_rules('description_complete', 'description complète', 'trim');
+        
+        
+        if ($this->form_validation->run()){
+
+            $nom_activite=$this->input->post('nom_activite');
+            $description_court=$this->input->post('description_court');
+            $description_complete=$this->input->post('description_complete');
+            
+            
+
+             $data=array( 
+                          'nom_activite' =>$nom_activite,
+                          'description_court' =>$description_court,
+                          'description_complete' =>$description_complete,
+                          
+
+                          
+                                
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+            
+
+             $this->administration_model->ajoutActivite($data);
+            
+
+              $data["listeActivite"]=$this->administration_model->getInfo_activite();
+              $data["pg_content"]="pg_nos_activites_ajouter_view";
+              $this->load->view("main_view",$data);
+
+
+
+            
+
+        }else{
+
+
         $data["pg_content"]="pg_nos_activites_ajouter_view";
         $this->load->view("main_view",$data);
+
+        }
+
+        
     }
 
 

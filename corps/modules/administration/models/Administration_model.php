@@ -99,6 +99,13 @@ class Administration_model extends CI_Model {
       }
     }
 
+    function ajoutEquipe($data){
+       
+     $this->db->insert('equipe', $data); 
+     return True;
+
+   }
+
 
      function getInfo_equipe_id($id_equipe){
       
@@ -114,6 +121,14 @@ class Administration_model extends CI_Model {
           return $data;
       }
     }
+
+
+    function ajoutActualite($data){
+       
+     $this->db->insert('actualite', $data); 
+     return True;
+
+   }
 
 
     function delete_equipe($id_equipe){
@@ -175,6 +190,13 @@ class Administration_model extends CI_Model {
           return $data;
       }
     }
+
+    function ajoutActivite($data){
+       
+     $this->db->insert('activite', $data); 
+     return True;
+
+   }
 
 
     function getInfo_activite_id($id_activite){

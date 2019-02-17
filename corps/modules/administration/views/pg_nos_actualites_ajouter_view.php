@@ -17,6 +17,8 @@
 								</div>
                             </div>
 							<div class="row">
+
+								<?php echo form_open_multipart('administration/nosActualites'); ?> 
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
@@ -40,13 +42,13 @@
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="titre" placeholder="Titre" value="">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Date" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="date_actualite" placeholder="Date" value="" >
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Auteur" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="auteur" placeholder="Auteur" value="" >
 													</div>
 													
 												</div>
@@ -54,17 +56,17 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Cible" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="cible" placeholder="Cible" value="" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Description courte" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="description_court" placeholder="Description courte" value="" >
 													</div>
 
 													
 												</div>
 												<div class="col-md-12">
-													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."></textarea>
+													<textarea class="form-control is-invalid state-invalid" name="description_complete" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."></textarea>
 												</div>
 
 												
@@ -74,10 +76,13 @@
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Valider</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Valider</button> </li>
 														</ul>
 												</div>
 											</div>
+
+											<?php echo form_close(); ?>
+
 										</div>
 									</div>
 									
