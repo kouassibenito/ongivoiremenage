@@ -13,7 +13,7 @@
 									<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/equipe/<?php if(isset($dallas->photo )) echo $dallas->photo ; ?>" alt=""> </div>
 									<div class="item-content">
 										<header class="entry-header">
-											<h3 class="entry-title small bottommargin_0"> <a href="team-single.html"><?php if(isset($dallas->nom )) echo $dallas->nom ; ?></a> </h3> <span class="small-text highlight"><?php if(isset($dallas->titre )) echo $dallas->titre ; ?></span> </header>
+											<h3 class="entry-title small bottommargin_0"> <a href="#"><?php if(isset($dallas->nom )) echo $dallas->nom ; ?></a> </h3> <span class="small-text highlight"><?php if(isset($dallas->titre )) echo $dallas->titre ; ?></span> </header>
 										<p class="member-social greylinks"> <a class="social-icon socicon-facebook" href="<?php if(isset($dallas->facebook )) echo $dallas->facebook ; ?>" title="Facebook"></a> <a class="social-icon socicon-twitter" href="<?php if(isset($dallas->twitter )) echo $dallas->twitter ; ?>" title="Twitter"></a> </p>
 									</div>
 								</article>

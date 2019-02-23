@@ -34,3 +34,7 @@
 					</div>
 				</div>
 			</section>
+
+		    <div class="marq">
+                <marquee>La formation du mois de février est prévue pour le 23 février à l'Eglise catholique Saint Timothée.</marquee>
+            </div>

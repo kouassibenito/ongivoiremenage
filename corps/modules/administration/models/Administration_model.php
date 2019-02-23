@@ -235,6 +235,13 @@ class Administration_model extends CI_Model {
       }
     }
 
+    function ajoutProjet($data){
+       
+     $this->db->insert('projet', $data); 
+     return True;
+
+   }
+
 
     function getInfo_projet_id($id_projet){
       
@@ -274,6 +281,14 @@ class Administration_model extends CI_Model {
     }
 
 
+    function ajoutFormation($data){
+       
+     $this->db->insert('formation', $data); 
+     return True;
+
+   }
+
+
     function getInfo_formation_id($id_formation){
    
       $this->db->where('id_formation',$id_formation);
@@ -310,6 +325,13 @@ class Administration_model extends CI_Model {
           return $data;
       }
     }
+
+     function ajoutPhoto($data){
+       
+     $this->db->insert('photo', $data); 
+     return True;
+
+   }
 
 
     function getInfo_photo_id($id_photo){
@@ -350,6 +372,14 @@ class Administration_model extends CI_Model {
     }
 
 
+    function ajoutVideo($data){
+       
+     $this->db->insert('video', $data); 
+     return True;
+
+   }
+
+
     function getInfo_video_id($id_video){
    
       $this->db->where('id_video',$id_video);
@@ -386,6 +416,13 @@ class Administration_model extends CI_Model {
           return $data;
       }
     }
+
+    function ajoutAdmin($data){
+       
+     $this->db->insert('administrateur', $data); 
+     return True;
+
+   }
 
 
     function getInfo_admin_id($id_administrateur){

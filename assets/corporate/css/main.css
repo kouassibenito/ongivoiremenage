@@ -507,6 +507,11 @@ textarea,
 	color: transparent;
 }
 
+.marq{
+	background-color:#08c208;
+	color: #f0f0f8;
+}
+
 /*icons for forms */
 form label + i,
 form label + i {
@@ -4474,7 +4479,7 @@ div.ppt {
 }
 
 .section_padding_top_15 > [class*="container"] {
-	padding-top: 15px;
+	/*padding-top: 15px;*/
 }
 
 .section_padding_top_20 > [class*="container"] {
@@ -4547,7 +4552,7 @@ div.ppt {
 }
 
 .section_padding_bottom_15 > [class*="container"] {
-	padding-bottom: 15px;
+	/*padding-bottom: 15px;*/
 }
 
 .section_padding_bottom_20 > [class*="container"] {
@@ -5424,7 +5429,7 @@ h2.section_header.color3 {
 }
 
 h2.section_header.color4 {
-	border-left-color: #03a8cb;
+	border-left-color: #f3a60b;
 }
 
 .text-center h2.section_header, h2.section_header.text-center {
@@ -5456,7 +5461,7 @@ h2.section_header:last-child {
 
 .section-excerpt {
 	font-size: 20px;
-	font-style: italic;
+	/*font-style: italic;*/
 }
 
 /*page preloader*/
@@ -7687,7 +7692,7 @@ a.underline-link {
 
 .ds .logo_text,
 .header_darkgrey .logo_text {
-	color: #ffffff;
+	color: #3cb018;
 }
 
 @media (min-width: 992px) {
@@ -8413,7 +8418,7 @@ body.active-side-header.slide-right .page_header_side {
 .ls h4,
 .ls h5,
 .ls h6 {
-	color: #1f232b;
+	color: #f3a60b;
 }
 
 .ls h1 a,
@@ -9109,7 +9114,7 @@ body.active-side-header.slide-right .page_header_side {
 .ds h4,
 .ds h5,
 .ds h6 {
-	color: #ffffff;
+	color: #3cb018;
 }
 
 .ds h1 a,
@@ -11576,7 +11581,7 @@ body.active-side-header.slide-right .page_header_side {
 }
 
 .intro_section.ds {
-	color: #ffffff;
+	color: #0f0e0e;
 }
 
 .intro_section .slides {
@@ -15544,6 +15549,7 @@ widget_pages
 .contact-form {
 	position: relative;
 	z-index: 3;
+	
 }
 
 .contact-form label[for] {

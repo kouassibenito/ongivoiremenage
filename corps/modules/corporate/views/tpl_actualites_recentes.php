@@ -4,7 +4,7 @@
 						<div class="col-sm-8 to_animate" data-animation="fadeInRight">
 							<h2 class="section_header">Actualités récentes</h2>
 						</div>
-						<div class="col-sm-4 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="blog-full.html" class="view-more">Voir plus</a> </div>
+						<div class="col-sm-4 text-right hidden-xs to_animate" data-animation="fadeInRight"> <a href="<?php echo base_url(); ?>corporate/notreEquipe" class="view-more">Voir plus</a> </div>
 						<div class="col-sm-12 topmargin_30">
 							<div class="loop-colors">
 
@@ -29,19 +29,19 @@
 														<div class="col-md-7 col-lg-8">
 															<div class="item-content">
 																<header class="entry-header">
-																	<h3 class="entry-title small"> <a href="blog-single-right.html" rel="bookmark"><?php if(isset($info->titre)) echo $info->titre; ?></a> </h3>
+																	<h3 class="entry-title small"> <a href="#" rel="bookmark"><?php if(isset($info->titre)) echo $info->titre; ?></a> </h3>
 																	<div class="entry-meta inline-content greylinks"> <span>
 																<i class="fa fa-calendar highlight rightpadding_5" aria-hidden="true"></i>
-																<a href="blog-single-right.html">
+																<a href="#">
 																	<time datetime="2017-10-03T08:50:40+00:00">
 																	<?php if(isset($info->date_actualite)) echo $info->date_actualite; ?></time>
 																</a>
 															</span> <span>
 																<i class="fa fa-user highlight rightpadding_5" aria-hidden="true"></i>
-																<a href="blog-right.html"><?php if(isset($info->auteur)) echo $info->auteur; ?></a>
+																<a href="#"><?php if(isset($info->auteur)) echo $info->auteur; ?></a>
 															</span> <span class="categories-links">
 																<i class="fa fa-tags highlight rightpadding_5" aria-hidden="true"></i>
-																<a href="blog-right.html"><?php if(isset($info->cible)) echo $info->cible; ?></a>
+																<a href="#"><?php if(isset($info->cible)) echo $info->cible; ?></a>
 															</span> </div>
 																</header>
 																<div class="entry-content md-content-3lines-ellipsis">
