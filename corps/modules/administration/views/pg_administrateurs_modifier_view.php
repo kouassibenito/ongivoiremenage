@@ -84,12 +84,12 @@
 												</div>
 		
 											</div>
-
-												
-												?php }
+											
+                                            <?php }
 												                    }
 
 												                ?>
+
 
 											</div>
 											<div class="row" style="margin-top: 20px;">

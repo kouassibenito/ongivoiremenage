@@ -236,8 +236,53 @@ class Corporate extends MX_Controller {
 
 
 
+  
 
 
+ /* function testmail(){
+
+      $to_email="infoongivoiremenage@gmail.com";
+      $message="test1";
+      $this->envoi_mail($to_email,$message);
+  }*/
+
+function envoiemail(){
+
+
+
+        $this->form_validation->set_rules('nom', 'Nom', 'trim');
+        $this->form_validation->set_rules('mail_internaute', 'mail internaute', 'trim');
+        $this->form_validation->set_rules('message', 'message', 'trim');
+        
+       
+        
+        if ($this->form_validation->run()){
+
+            $nom=$this->input->post('nom');
+            $mail_internaute=$this->input->post('mail_internaute');
+            $message=$this->input->post('message');
+            $to_email="infoongivoiremenage@gmail.com";
+            $message_envoye=$nom."<br/>".$mail_internaute."<br/>".$message;
+            
+            $this->administration_model->envoi_mail($to_email,$message_envoye);
+
+
+
+            redirect("corporate");
+            
+
+        }else{
+
+
+        $data["pg_content"]="pg_notre_equipe_ajouter_view";
+        $this->load->view("main_view",$data);
+       
+
+       }
+
+
+        
+    }
 
 
 

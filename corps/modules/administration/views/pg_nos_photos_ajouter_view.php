@@ -14,8 +14,10 @@
 									</div>
 								</div>
 								</div>
-</div>
+                            </div>
 							<div class="row">
+
+								<?php echo form_open_multipart('administration/nosPhotos'); ?> 
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
@@ -39,7 +41,7 @@
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre de la photo" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="titre_photo" placeholder="Titre de la photo" value="">
 													</div>
 													
 												</div>
@@ -48,7 +50,7 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Catégorie de la photo" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="id_categorie_photo" placeholder="Catégorie de la photo" value="" >
 													</div>
 
 												
@@ -58,10 +60,13 @@
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Valider</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Valider</button></li>
 														</ul>
 												</div>
 											</div>
+
+											<?php echo form_close(); ?>
+											
 										</div>
 									</div>
 									

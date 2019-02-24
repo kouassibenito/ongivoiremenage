@@ -16,6 +16,8 @@
 </div>
 							<div class="row">
 
+								<?php echo form_open_multipart("administration/equipeModifier/$id_equipe"); ?> 
+
 
 								<?php
 
@@ -46,9 +48,7 @@
 										</div>
 									</div>
 								</div>
-
-								
-                                    
+   
 							</div>
 							<div class="row">
 								<div class="col-md-12">
@@ -63,10 +63,10 @@
 													<input type="hidden" name="id_equipe" value="<?php if(isset($info->id_equipe)) echo $info->id_equipe; ?>">
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom complet" value="<?php if(isset($info->nom)) echo $info->nom; ?>">
+														<input type="text" class="form-control is-invalid state-invalid" name="nom" placeholder="Nom complet" value="<?php if(isset($info->nom)) echo $info->nom; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="titre" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>" >
 													</div>
 													
 												</div>
@@ -74,11 +74,11 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Facebook" value="<?php if(isset($info->facebook)) echo $info->facebook; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="facebook" placeholder="Lien Facebook" value="<?php if(isset($info->facebook)) echo $info->facebook; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Lien Twitter" value="<?php if(isset($info->twitter)) echo $info->twitter; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="twitter" placeholder="Lien Twitter" value="<?php if(isset($info->twitter)) echo $info->twitter; ?>" >
 													</div>
 
 													
@@ -97,10 +97,11 @@
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</button></li>
 														</ul>
 												</div>
 											</div>
+											<?php echo form_close(); ?>
 										</div>
 									</div>
 									

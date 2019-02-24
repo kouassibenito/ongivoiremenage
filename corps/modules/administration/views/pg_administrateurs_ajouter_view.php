@@ -15,6 +15,8 @@
 								</div>
 </div>
 							<div class="row">
+
+								<?php echo form_open_multipart('administration/adminAjouter'); ?>
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
@@ -38,13 +40,13 @@
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom" value="">
+														<input type="text" class="form-control is-invalid state-invalid" name="nom_administrateur" placeholder="Nom" value="">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Prénoms" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="prenom_administrateur" placeholder="Prénoms" value="" >
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="E-mail" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="email_administrateur" placeholder="E-mail" value="" >
 													</div>
 													
 												</div>
@@ -52,15 +54,15 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Téléphone" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="telephone_administrateur" placeholder="Téléphone" value="" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Fonction" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="fonction_administrateur" placeholder="Fonction" value="" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Mot de passe" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="password_administrateur" placeholder="Mot de passe" value="" >
 													</div>
 
 													
@@ -76,10 +78,13 @@
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Valider</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Valider</button></li>
 														</ul>
 												</div>
 											</div>
+
+											<?php echo form_close(); ?>
+
 										</div>
 									</div>
 									

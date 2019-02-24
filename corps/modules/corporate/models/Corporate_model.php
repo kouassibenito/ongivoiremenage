@@ -543,7 +543,44 @@ class Corporate_model extends CI_Model {
 
 
 
+public function envoi_mail($to_email,$message){
 
+        
+
+            $from_email = "infoongivoiremenage@gmail.com";
+            
+            $nom ="ONG ivoire ménage";
+           
+            $subject2 = 'ONG ivoire ménage - message internaute';
+           
+            $message_final = $message;
+             
+            $config['protocol'] = 'smtp';
+            $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+            $config['smtp_port'] = '465';
+            $config['smtp_user'] = 'infoongivoiremenage@gmail.com';
+            $config['smtp_pass'] = 'Kouassi2013';
+            $config['mailtype'] = 'html';
+            $config['charset'] = 'utf-8';
+            $config['wordwrap'] = TRUE;
+            $config['newline'] = "\r\n"; //use double quotes
+            $this->load->library('email', $config);
+            
+            $this->email->initialize($config);
+             //send mail
+            $this->email->from($from_email, $nom);
+            $this->email->to($to_email);
+            //$this->email->cc($list);
+            $this->email->subject($subject2);
+            $this->email->message($message_final);
+
+            if (!$this->email->send()) { 
+                show_error($this->email->print_debugger()); 
+             } else { 
+                   echo 'Your e-mail has been sent!'; 
+                    }
+
+     }
 
 
 

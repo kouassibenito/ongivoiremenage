@@ -107,6 +107,15 @@ class Administration_model extends CI_Model {
    }
 
 
+   function modifier_equipe($id_equipe,$data){
+       
+        $this->db->where('id_equipe',$id_equipe);
+        $this->db->update('equipe', $data);
+        return True;
+
+   }
+
+
      function getInfo_equipe_id($id_equipe){
       
       $this->db->where('id_equipe',$id_equipe);
@@ -129,6 +138,15 @@ class Administration_model extends CI_Model {
      return True;
 
    }
+
+   function modifier_actualite($id_actualite,$data){
+       
+        $this->db->where('id_actualite',$id_actualite);
+        $this->db->update('actualite', $data);
+        return True;
+
+   }
+
 
 
     function delete_equipe($id_equipe){
@@ -199,6 +217,15 @@ class Administration_model extends CI_Model {
    }
 
 
+   function modifier_activite($id_activite,$data){
+       
+        $this->db->where('id_activite',$id_activite);
+        $this->db->update('activite', $data);
+        return True;
+
+   }
+
+
     function getInfo_activite_id($id_activite){
       
       $this->db->where('id_activite',$id_activite);
@@ -239,6 +266,15 @@ class Administration_model extends CI_Model {
        
      $this->db->insert('projet', $data); 
      return True;
+
+   }
+
+
+   function modifier_projet($id_projet,$data){
+       
+        $this->db->where('id_projet',$id_projet);
+        $this->db->update('projet', $data);
+        return True;
 
    }
 
@@ -288,6 +324,14 @@ class Administration_model extends CI_Model {
 
    }
 
+   function modifier_formation($id_formation,$data){
+       
+        $this->db->where('id_formation',$id_formation);
+        $this->db->update('formation', $data);
+        return True;
+
+   }
+
 
     function getInfo_formation_id($id_formation){
    
@@ -330,6 +374,14 @@ class Administration_model extends CI_Model {
        
      $this->db->insert('photo', $data); 
      return True;
+
+   }
+
+   function modifier_photo($id_photo,$data){
+       
+        $this->db->where('id_photo',$id_photo);
+        $this->db->update('photo', $data);
+        return True;
 
    }
 
@@ -380,6 +432,15 @@ class Administration_model extends CI_Model {
    }
 
 
+   function modifier_video($id_video,$data){
+       
+        $this->db->where('id_video',$id_video);
+        $this->db->update('video', $data);
+        return True;
+
+   }
+
+
     function getInfo_video_id($id_video){
    
       $this->db->where('id_video',$id_video);
@@ -421,6 +482,16 @@ class Administration_model extends CI_Model {
        
      $this->db->insert('administrateur', $data); 
      return True;
+
+   }
+
+
+
+   function modifier_admin($id_administrateur,$data){
+       
+        $this->db->where('id_administrateur',$id_administrateur);
+        $this->db->update('video', $data);
+        return True;
 
    }
 

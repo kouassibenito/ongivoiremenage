@@ -43,7 +43,7 @@
 														<input type="text" class="form-control is-invalid state-invalid" name="titre" placeholder="Titre" value="">
 													</div>
 													<div class="form-group">
-														<input type="date" class="form-control is-invalid state-invalid" name="date_formation" placeholder="Date" value="" >
+														<input type="text" class="form-control is-invalid state-invalid" name="date_formation" placeholder="Date" value="" >
 													</div>
 													<div class="form-group">
 														<input type="text" name="auteur" class="form-control is-invalid state-invalid" placeholder="Auteur" value="" >
