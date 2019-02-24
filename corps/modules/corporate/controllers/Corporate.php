@@ -252,6 +252,7 @@ function envoiemail(){
 
         $this->form_validation->set_rules('nom', 'Nom', 'trim');
         $this->form_validation->set_rules('mail_internaute', 'mail internaute', 'trim');
+        $this->form_validation->set_rules('sujet', 'sujet', 'trim');
         $this->form_validation->set_rules('message', 'message', 'trim');
         
        
@@ -260,15 +261,18 @@ function envoiemail(){
 
             $nom=$this->input->post('nom');
             $mail_internaute=$this->input->post('mail_internaute');
+            $sujet=$this->input->post('sujet');
             $message=$this->input->post('message');
             $to_email="infoongivoiremenage@gmail.com";
-            $message_envoye=$nom."<br/>".$mail_internaute."<br/>".$message;
+            $message_envoye=$nom."<br/>".$mail_internaute."<br/>".$sujet."<br/>".$message;
             
-            $this->administration_model->envoi_mail($to_email,$message_envoye);
+           
+
+            $this->Corporate_model->envoi_mail($to_email,$message_envoye);
 
 
 
-            redirect("corporate");
+            //redirect("corporate");
             
 
         }else{

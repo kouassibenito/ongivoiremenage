@@ -99,7 +99,7 @@
 			<!-- end about -->
 
 			<!-- aide -->
-			<?php include("tpl_aide.php"); ?> 
+			<?php //include("tpl_aide.php"); ?> 
 			<!-- end aide -->
 
 			<!-- team -->

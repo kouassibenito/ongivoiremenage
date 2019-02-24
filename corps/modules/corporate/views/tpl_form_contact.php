@@ -35,15 +35,15 @@
 						   }
 
 						 ?>
-
+                       <?php echo form_open_multipart('corporate/envoiemail'); ?>
 					<div class="row topmargin_60">
 						<div class="col-sm-12 to_animate">
-							<form class="contact-form cs parallax overlay_color columns_padding_5 rounded overflow_hidden" method="post" action="http://webdesign-finder.com/html/diversify/">
+							<div class="contact-form cs parallax overlay_color columns_padding_5 rounded overflow_hidden" method="post" action="http://webdesign-finder.com/html/diversify/">
 								<div class="row">
 									<div class="col-sm-6">
-										<p class="form-group"> <label for="name">Nom complet <span class="required">*</span></label> <i class="fa fa-user grey" aria-hidden="true"></i> <input type="text" aria-required="true" size="30" value="" name="name" id="name" class="form-control" placeholder="Nom complet">											</p>
-										<p class="form-group"> <label for="email">Adresse e-mail<span class="required">*</span></label> <i class="fa fa-envelope grey" aria-hidden="true"></i> <input type="email" aria-required="true" size="30" value="" name="email" id="email" class="form-control" placeholder="Adresse e-mail">											</p>
-										<p class="form-group"> <label for="subject">Sujet<span class="required">*</span></label> <i class="fa fa-flag grey" aria-hidden="true"></i> <input type="text" aria-required="true" size="30" value="" name="subject" id="subject" class="form-control" placeholder="Sujet">											</p>
+										<p class="form-group"> <label for="name">Nom complet <span class="required">*</span></label> <i class="fa fa-user grey" aria-hidden="true"></i> <input type="text" aria-required="true" size="30" value="" name="nom" id="name" class="form-control" placeholder="Nom complet">											</p>
+										<p class="form-group"> <label for="email">Adresse e-mail<span class="required">*</span></label> <i class="fa fa-envelope grey" aria-hidden="true"></i> <input type="email" aria-required="true" size="30" value="" name="mail_internaute" id="email" class="form-control" placeholder="Adresse e-mail">											</p>
+										<p class="form-group"> <label for="subject">Sujet<span class="required">*</span></label> <i class="fa fa-flag grey" aria-hidden="true"></i> <input type="text" aria-required="true" size="30" value="" name="sujet" id="subject" class="form-control" placeholder="Sujet">											</p>
 									</div>
 									<div class="col-sm-6">
 										<p class="contact-form-message form-group"> <label for="message">Message</label> <i class="fa fa-comment grey" aria-hidden="true"></i> <textarea aria-required="true" rows="3" cols="45" name="message" id="message" class="form-control" placeholder="Message"></textarea> </p>
@@ -54,8 +54,9 @@
 										<p class="contact-form-submit text-center topmargin_30"> <button type="submit" id="contact_form_submit" name="contact_submit" class="theme_button color1">Envoyer message</button> </p>
 									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
+					<?php echo form_close(); ?>
 				</div>
 			</section>
