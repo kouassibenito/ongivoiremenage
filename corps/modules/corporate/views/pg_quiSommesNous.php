@@ -99,7 +99,7 @@
 						<div class="col-md-12" data-animation="fadeInRight" data-delay="300">
 							<h2 class="section_header color4"> Qui sommes nous? </h2>
 							<p class="section-excerpt grey">L’ONG Ivoire Ménage, est une Organisation Non Gouvernementale, apolitique et à but non lucratif, officiellement créée en Côte d’Ivoire en novembre 2017 et reconnue par arrêté N°0433/PA du 12 mars 2018. Cette organisation  œuvre pour la formation et l’éducation gratuites des filles et garçons de ménage communément appelés en Côte d’Ivoire « servantes, boys ou nounous ». Elle regroupe des femmes et des hommes évoluant dans divers domaines d’activités:
-                  <ul>
+                  <ul class="section-excerpt grey">
                       <li>Electrique et Energétique,</li>
 
                       <li>Management de projet,</li>
@@ -110,10 +110,10 @@
 
                       <li>Juridique et Assistanat</li>
                    </ul>
- Les membres fondateurs de l’ONG Ivoire Ménage,ont été motivés par la récurrence des difficultés auxquelles sont confrontésles filles et garçons de ménagedans l’exercice de leur métier; à savoir :
+ <p class="section-excerpt grey">Les membres fondateurs de l’ONG Ivoire Ménage,ont été motivés par la récurrence des difficultés auxquelles sont confrontés les filles et garçons de ménage dans l’exercice de leur métier à savoir :</p>
 
 ​
-		<ul>
+		<ul class="section-excerpt grey">
 			<li>L’Analphabétisme ;</li>
 			<li>La Méconnaissance du métier de ménage et d’entretien de bureau;</li>
 			<li>Le Manque de formation(théorique/Pratique)au métier de ménage et d’entretien;</li>

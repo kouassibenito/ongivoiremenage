@@ -92,7 +92,7 @@
 			<!-- end header -->
 
 			<!-- map -->
-			<?php include("tpl_map.php"); ?>
+			<?php //include("tpl_map.php"); ?>
             <!-- end map -->
 
             <!-- formulaire de contact -->

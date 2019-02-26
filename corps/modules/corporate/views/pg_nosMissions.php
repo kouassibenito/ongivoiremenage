@@ -100,34 +100,61 @@
 						<div class="col-md-12" data-animation="fadeInRight" data-delay="300">
 							<h2 class="section_header color4"> Nos missions </h2>
 							<p class="section-excerpt grey">
-               <ul>
-            <li>Renforcer les compétences et le professionnalisme du personnel domestique,</li>
+               <ul class="section-excerpt grey">
+            <li>Renforcer les compétences et le professionnalisme du personnel domestique;</li>
 
-            <li>Faciliter l’insertiondu personnel domestique dans le tissu socio-professionnel,</li>
+            <li>Faciliter l’insertion du personnel domestique dans le tissu socio-professionnel;</li>
 
-            <li>Aider à l’acquisition d’une autonomie financière,</li>
-
-            <li>Former et éduquer le personnel domestique au métier de ménage,</li>
-
-            <li>Œuvrer à l’insertion sociale des filles de ménage,</li>
-                   
-			<li>Former à la maîtrise des premiers soins de santé et du secourisme,</li>
-			<li>Créer un cadre d’échange et de partage d’expérience entre le personnel domestique et les employeurs,</li>
-			<li>Le Manque de formation(théorique/Pratique)au métier de ménage et d’entretien,</li>
-			<li>Travailler pour l’autonomisation, le bien-être et l’épanouissement des filles/des garçons de ménage ,</li>
-			<li>Sensibiliser les familles d’accueil quant à l’importance et au bon traitement du personnel de ménage,</li>
-
-			<li>Faire l’alphabétisation  (apprendre à lire et à écrire la langue française),</li>
-			<li>Lutter contre les abus et les violences de tous genres subis par le personnel de ménage,</li>
-
-			<li>Prévenir les situations de vol et/ou de maltraitance (…) commis par le personnel de ménage,</li>
-			<li>Fournir une assistance et un coaching au personnel de ménage</li>
+            <li>Aider à l’acquisition d’une autonomie financière.</li>
       </ul>
 </p>
 						</div>
 					</div>
 				</div>
 			</section>
+
+			<section id="about" class="ls section_padding_top_110 columns_padding_30">
+				<div class="container">
+					<div class="row">
+						
+						<div class="col-md-12" data-animation="fadeInRight" data-delay="300">
+							<h2 class="section_header color4"> Nos visions </h2>
+							<p class="section-excerpt grey">
+               <ul class="section-excerpt grey">
+            <li>Mettre en place un Centre de Formation et d’Éducation dédié au personnel de ménage ;</li>
+
+            <li>Créer des antennes de formation sur tout le territoire Ivoirien ;</li>
+
+            <li>Valoriser et Professionnaliser le métier de personnel de ménage.</li>
+      </ul>
+</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="about" class="ls section_padding_top_110 columns_padding_30">
+				<div class="container">
+					<div class="row">
+						
+						<div class="col-md-12" data-animation="fadeInRight" data-delay="300">
+							<h2 class="section_header color4"> Nos valeurs fondamentales </h2>
+							<p class="section-excerpt grey">
+               <ul class="section-excerpt grey">
+            <li>Intégrité;</li>
+
+            <li>Service;</li>
+
+            <li>Responsabilité;</li>
+
+            <li>Rigueur.</li>
+      </ul>
+</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			
 			
 
 			<!-- actualite2 -->

@@ -99,12 +99,12 @@
 						
 						<div class="col-md-12" data-animation="fadeInRight" data-delay="300">
 							<h2 class="section_header color4">Nos objectifs</h2>
-							<p class="section-excerpt grey">Objectif global de l’ONG Ivoire Ménage:</p>
-							<p>
+							<p class="section-excerpt grey"><u>Objectif global de l’ONG Ivoire Ménage</u>:</p>
+							<p class="section-excerpt grey">
 								Contribuer aux renforcements des capacités du personnel domestique et d’entretien de bureau en Côte d’Ivoire</p>
-							<p class="section-excerpt grey">Objectifs spécifiques :</p><p>
-                  <ul>
-                      <li>Former et éduquer le personnel domestique au métier de ménage ;</li>
+							<p class="section-excerpt grey"><u>Objectifs spécifiques</u>:</p><p>
+                  <ul class="section-excerpt grey">
+                      <li>Former à la maîtrise des premiers soins de santé et du secourisme ;</li>
 
                       <li>Œuvrer à l’insertion sociale des filles de ménage ;</li>
 
@@ -124,28 +124,33 @@
 
                       <li>Fournir une assistance et un coaching au personnel de ménage</li>
                    </ul>
-              
-               <p class="section-excerpt grey">Nos visions:</p>
+             
 
-		<ul>
-			<li>Mettre en place un Centre de Formation et d’Éducation dédié au personnel de ménage ;</li>
-			<li>Créer des antennes de formation sur tout le territoire Ivoirien ;</li>
-			<li>Valoriser et Professionnaliser le métier de personnel de ménage</li>
-			
+</p>
+						</div>
+					</div>
+				</div>
+				
+			</section>
 
-		</ul>
+			<section id="about" class="ls section_padding_top_110 columns_padding_30">
+				<div class="container">
+					<div class="row">
+						
+						<div class="col-md-12" data-animation="fadeInRight" data-delay="300">
+							<h2 class="section_header color4"> Nos domaines d’interventions </h2>
+							<p class="section-excerpt grey">
+               <ul class="section-excerpt grey">
+            <li>Education et formation;</li>
 
-		<p class="section-excerpt grey">Nos valeurs :</p>
+            <li>Santé et Hygiène;</li>
 
-		<ul>
-			<li>Intégrité</li>
-			<li>Honnêteté</li>
-			<li>Respect de l’engagement</li>
-			<li>Confiance</li>
-			<li>Rigueur</li>
+            <li>Entreprenariat;</li>
 
-		</ul>
+            <li>Protection, autonomisation et développement des filles et garçons de ménage ;</li>
 
+             <li>Economie de l’Eau et l’Energie.</li>
+      </ul>
 </p>
 						</div>
 					</div>

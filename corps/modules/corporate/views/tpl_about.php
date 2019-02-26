@@ -19,7 +19,7 @@
 						<div class="col-md-6 col-md-pull-6 to_animate" data-animation="fadeInRight" data-delay="300">
 							<h2 class="section_header color4"> <?php if(isset($info->titre)) echo $info->titre; ?></h2>
 							<p class="section-excerpt grey"><?php if(isset($info->description_gras)) echo $info->description_gras; ?></p>
-							<p><?php if(isset($info->description_simple)) echo $info->description_simple; ?><br/>
+							<p class="section-excerpt grey"><?php if(isset($info->description_simple)) echo $info->description_simple; ?><br/>
 								
 						
              <a href="<?php echo base_url(); ?>corporate/quiSommesNous" class="more-link">Lire plus</a></p>
