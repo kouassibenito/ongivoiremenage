@@ -537,10 +537,77 @@ class Administration extends MX_Controller {
 
 
     function nosActualitesModifier($id_actualite){
+
+        $this->form_validation->set_rules('titre', 'Titre', 'trim|required');
+        $this->form_validation->set_rules('date_actualite', 'Date actualité', 'trim');
+        $this->form_validation->set_rules('auteur', 'Auteur', 'trim');
+
+        $this->form_validation->set_rules('cible', 'Cible', 'trim');
+        $this->form_validation->set_rules('description_court', 'Description courte', 'trim');
+        $this->form_validation->set_rules('description_complete', 'Description complète', 'trim');
         
+        if ($this->form_validation->run()){
+
+            $titre=$this->input->post('titre');
+            $date_actualite=$this->input->post('date_actualite');
+            $auteur=$this->input->post('auteur');
+
+            $cible=$this->input->post('cible');
+            $description_court=$this->input->post('description_court');
+            $description_complete=$this->input->post('description_complete');
+            
+             $data=array( 
+                          'titre' =>$titre,
+                          'date_actualite' =>$date_actualite,
+                          'auteur' =>$auteur,
+
+                          'cible' =>$cible,
+                          'description_court' =>$description_court,
+                          'description_complete' =>$description_complete,
+                          
+                                
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+
+
+             $this->administration_model->modifier_actualite($id_actualite,$data);
+
+
+
         $data["info_actualite_id"]=$this->administration_model->getInfo_actualite_id($id_actualite);
         $data["pg_content"]="pg_nos_actualites_modifier_view";
         $this->load->view("main_view",$data);
+        }else{
+          
+        $data["info_actualite_id"]=$this->administration_model->getInfo_actualite_id($id_actualite);
+        $data["pg_content"]="pg_nos_actualites_modifier_view";
+        $this->load->view("main_view",$data);
+
+       }
+        
+        
     }
 
 

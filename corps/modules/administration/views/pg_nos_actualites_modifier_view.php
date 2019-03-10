@@ -15,15 +15,8 @@
 								</div>
 </div>
 							<div class="row">
-								
-								<div class="col-lg-12">
-									<div class="card shadow">
-										<div class="card-header">
-											<h2 class="mb-0">Ajouter/Modifier une image</h2>
-										</div>
-
-										
-										<?php
+	<?php //echo form_open_multipart("administration/nosActualitesModifier/$id_actualite"); ?> 
+								<?php
 
 														             if(isset($info_actualite_id)){
                                                                         
@@ -41,6 +34,15 @@
 															            	
 			                                                              
 															    ?>
+								
+								<div class="col-lg-12">
+									<div class="card shadow">
+										<div class="card-header">
+											<h2 class="mb-0">Ajouter/Modifier une image</h2>
+										</div>
+
+										
+										
 										<div class="card-body">
 											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/actualite/<?php if(isset($image)) echo $image; ?>" data-height="300"  />
 										</div>
@@ -61,13 +63,13 @@
 													<input type="hidden" name="id_actualite" value="<?php if(isset($info->id_actualite)) echo $info->id_actualite; ?>">
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>">
+														<input type="text" class="form-control is-invalid state-invalid" name="titre" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Date" value="<?php if(isset($info->date_actualite)) echo $info->date_actualite; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="date_actualite" placeholder="Date" value="<?php if(isset($info->date_actualite)) echo $info->date_actualite; ?>" >
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Auteur" value="<?php if(isset($info->auteur)) echo $info->auteur; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="auteur" placeholder="Auteur" value="<?php if(isset($info->auteur)) echo $info->auteur; ?>" >
 													</div>
 													
 												</div>
@@ -75,36 +77,34 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Cible" value="<?php if(isset($info->cible)) echo $info->cible; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="cible" placeholder="Cible" value="<?php if(isset($info->cible)) echo $info->cible; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Description courte" value="<?php if(isset($info->description_court)) echo $info->description_court; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="description_court" placeholder="Description courte" value="<?php if(isset($info->description_court)) echo $info->description_court; ?>" >
 													</div>
 
 													
 												</div>
 												<div class="col-md-12">
-													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."><?php if(isset($info->description_complete)) echo $info->description_complete; ?></textarea>
+													<textarea class="form-control is-invalid state-invalid" name="description_complete" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."><?php if(isset($info->description_complete)) echo $info->description_complete; ?></textarea>
 												</div>
+											</div>
 
-												<?php }
+											<?php }
 												                    }
 
 												                ?>
 
-
-												
-												
-											</div>
 											<div class="row" style="margin-top: 20px;">
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</button></li>
 														</ul>
 												</div>
 											</div>
+											<?php echo form_close(); ?>
 										</div>
 									</div>
 									

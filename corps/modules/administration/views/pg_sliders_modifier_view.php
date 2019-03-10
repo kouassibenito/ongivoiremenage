@@ -15,7 +15,7 @@
 								</div>
 </div>
 							<div class="row">
-									<?php echo form_open_multipart("administration/slidersModifier/$id_slide"); ?> 
+				<?php echo form_open_multipart("administration/slidersModifier/$id_slide"); ?> 
 
 									<?php
 
