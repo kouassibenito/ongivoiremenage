@@ -490,7 +490,7 @@ class Administration_model extends CI_Model {
    function modifier_admin($id_administrateur,$data){
        
         $this->db->where('id_administrateur',$id_administrateur);
-        $this->db->update('video', $data);
+        $this->db->update('administrateur', $data);
         return True;
 
    }

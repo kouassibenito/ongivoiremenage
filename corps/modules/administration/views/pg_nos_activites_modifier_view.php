@@ -15,6 +15,7 @@
 								</div>
                             </div>
 							<div class="row">
+	<form action="<?php echo base_url(); ?>administration/activiteModifier/<?php echo $id_activite; ?>" method="POST">
 
 								<?php
 
@@ -58,22 +59,22 @@
 												<div class="col-md-6">
 
 
-													<input type="hidden" name="id_activite" value="<?php if(isset($info->id_activite)) echo $info->id_activite; ?>">
+													<input type="hidden" name="id_activite" value="<?php if(isset($id_activite)) echo $id_activite; ?>">
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom activité" value="<?php if(isset($info->nom_activite)) echo $info->nom_activite; ?>">
+														<input type="text" class="form-control is-invalid state-invalid" name="nom_activite" placeholder="Nom activité" value="<?php if(isset($info->nom_activite)) echo $info->nom_activite; ?>">
 													</div>
 
 												</div>
 
 												<div class="col-md-6">
 												    <div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Description courte" value="<?php if(isset($info->description_court)) echo $info->description_court; ?>">
+														<input type="text" class="form-control is-invalid state-invalid" name="description_court" placeholder="Description courte" value="<?php if(isset($info->description_court)) echo $info->description_court; ?>">
 												    </div>
 												</div>
 												
 												<div class="col-md-12">
-													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."><?php if(isset($info->description_complete)) echo $info->description_complete; ?></textarea>
+													<textarea class="form-control is-invalid state-invalid" name="description_complete" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."><?php if(isset($info->description_complete)) echo $info->description_complete; ?></textarea>
 
 
 
@@ -90,10 +91,11 @@
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</button></li>
 														</ul>
 												</div>
 											</div>
+											</form>
 										</div>
 									</div>
 									

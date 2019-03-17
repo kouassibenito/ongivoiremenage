@@ -14,14 +14,25 @@ class Administration extends MX_Controller {
 
     function index(){
 
+      if($this->session->userdata('id_admin')){
+
         $data["pg_content"]="pg_dashboard_view";
         $this->load->view("main_view",$data);
+      }else{
+
+        redirect("login");
+      }
+
+
+        
     }
 
   
      function infosGenerales(){
 
-        $this->form_validation->set_rules('libelle_organisation', 'Libellé Organisation', 'trim|required');
+      if($this->session->userdata('id_admin')){
+
+       $this->form_validation->set_rules('libelle_organisation', 'Libellé Organisation', 'trim|required');
         $this->form_validation->set_rules('pays', 'pays', 'trim');
         $this->form_validation->set_rules('ville', 'ville', 'trim');
         $this->form_validation->set_rules('commune', 'commune', 'trim');
@@ -126,6 +137,12 @@ class Administration extends MX_Controller {
                 
 
        }
+      }else{
+
+        redirect("login");
+      }
+
+        
 
        
     }
@@ -555,6 +572,8 @@ class Administration extends MX_Controller {
             $cible=$this->input->post('cible');
             $description_court=$this->input->post('description_court');
             $description_complete=$this->input->post('description_complete');
+            $id_actualite=$this->input->post('id_actualite');
+            
             
              $data=array( 
                           'titre' =>$titre,
@@ -595,12 +614,14 @@ class Administration extends MX_Controller {
              $this->administration_model->modifier_actualite($id_actualite,$data);
 
 
-
+        $data["id_actualite"]=$id_actualite; 
         $data["info_actualite_id"]=$this->administration_model->getInfo_actualite_id($id_actualite);
         $data["pg_content"]="pg_nos_actualites_modifier_view";
         $this->load->view("main_view",$data);
         }else{
-          
+        
+
+        $data["id_actualite"]=$id_actualite;  
         $data["info_actualite_id"]=$this->administration_model->getInfo_actualite_id($id_actualite);
         $data["pg_content"]="pg_nos_actualites_modifier_view";
         $this->load->view("main_view",$data);
@@ -690,7 +711,6 @@ class Administration extends MX_Controller {
 
         }else{
 
-
         $data["pg_content"]="pg_nos_activites_ajouter_view";
         $this->load->view("main_view",$data);
 
@@ -701,10 +721,68 @@ class Administration extends MX_Controller {
 
 
     function activiteModifier($id_activite){
+        $this->form_validation->set_rules('nom_activite', 'nom activite', 'trim');
+        $this->form_validation->set_rules('description_court', 'Description courte', 'trim');
+        $this->form_validation->set_rules('description_complete', 'Description complète', 'trim');
+       
         
+        if ($this->form_validation->run()){
+
+            $nom_activite=$this->input->post('nom_activite');
+            $description_court=$this->input->post('description_court');
+            $description_complete=$this->input->post('description_complete');
+            
+             $data=array( 
+                          'nom_activite' =>$nom_activite,
+                          'description_court' =>$description_court,
+                          'description_complete' =>$description_complete,
+
+                          
+                                
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+            
+
+        $this->administration_model->modifier_activite($id_activite,$data);
+
+         $data["id_activite"]=$id_activite;
         $data["info_activite_id"]=$this->administration_model->getInfo_activite_id($id_activite);
         $data["pg_content"]="pg_nos_activites_modifier_view";
         $this->load->view("main_view",$data);
+            
+
+        }else{
+
+        $data["id_activite"]=$id_activite;
+        $data["info_activite_id"]=$this->administration_model->getInfo_activite_id($id_activite);
+        $data["pg_content"]="pg_nos_activites_modifier_view";
+        $this->load->view("main_view",$data);
+
+        }
+        
+        
     }
 
 
@@ -795,10 +873,67 @@ class Administration extends MX_Controller {
 
 
     function projetModifier($id_projet){
+        $this->form_validation->set_rules('nom_projet', 'nom projet', 'trim');
+        $this->form_validation->set_rules('description_court', 'Description courte', 'trim');
+        $this->form_validation->set_rules('description_complete', 'Description complète', 'trim');
+       
         
+        if ($this->form_validation->run()){
+
+            $nom_projet=$this->input->post('nom_projet');
+            $description_court=$this->input->post('description_court');
+            $description_complete=$this->input->post('description_complete');
+            
+             $data=array( 
+                          'nom_projet' =>$nom_projet,
+                          'description_court' =>$description_court,
+                          'description_complete' =>$description_complete,
+
+                          
+                                
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+            
+
+        $this->administration_model->modifier_projet($id_projet,$data);
+
+        $data["id_projet"]=$id_projet;
         $data["info_projet_id"]=$this->administration_model->getInfo_projet_id($id_projet);
         $data["pg_content"]="pg_nos_projets_modifier_view";
         $this->load->view("main_view",$data);
+            
+
+        }else{
+        
+        $data["id_projet"]=$id_projet;
+        $data["info_projet_id"]=$this->administration_model->getInfo_projet_id($id_projet);
+        $data["pg_content"]="pg_nos_projets_modifier_view";
+        $this->load->view("main_view",$data);
+
+        }
+        
     }
 
 
@@ -900,10 +1035,80 @@ class Administration extends MX_Controller {
 
 
     function formationModifier($id_formation){
+
+        $this->form_validation->set_rules('titre', 'Titre', 'trim');
+        $this->form_validation->set_rules('date_formation', 'Date formation', 'trim');
+        $this->form_validation->set_rules('auteur', 'auteur', 'trim');
+
+        $this->form_validation->set_rules('cible', 'cible', 'trim');
+        $this->form_validation->set_rules('description_court', 'Description courte', 'trim');
+        $this->form_validation->set_rules('description_complete', 'Description complète', 'trim');
+       
         
+        if ($this->form_validation->run()){
+
+            $titre=$this->input->post('titre');
+            $date_formation=$this->input->post('date_formation');
+            $auteur=$this->input->post('auteur');
+
+            $cible=$this->input->post('cible');
+            $description_court=$this->input->post('description_court');
+            $description_complete=$this->input->post('description_complete');
+            
+             $data=array( 
+                          'titre' =>$titre,
+                          'date_formation' =>$date_formation,
+                          'auteur' =>$auteur,
+
+                          'cible' =>$cible,
+                          'description_court' =>$description_court,
+                          'description_complete' =>$description_complete,
+
+                          
+                                
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+            
+
+        $this->administration_model->modifier_formation($id_formation,$data);
+
+        $data["id_formation"]=$id_formation;
         $data["info_formation_id"]=$this->administration_model->getInfo_formation_id($id_formation);
         $data["pg_content"]="pg_nos_formations_modifier_view";
         $this->load->view("main_view",$data);
+            
+
+        }else{
+
+        $data["id_formation"]=$id_formation;
+        $data["info_formation_id"]=$this->administration_model->getInfo_formation_id($id_formation);
+        $data["pg_content"]="pg_nos_formations_modifier_view";
+        $this->load->view("main_view",$data);
+
+        }
+        
     }
 
 
@@ -983,10 +1188,60 @@ class Administration extends MX_Controller {
 
 
     function photoModifier($id_photo){
-        
+
+        $this->form_validation->set_rules('titre_photo', 'Titre photo', 'trim');
+        $this->form_validation->set_rules('id_categorie_photo', 'Catégorie photo', 'trim');
+        if ($this->form_validation->run()){
+
+            $titre_photo=$this->input->post('titre_photo');
+            $id_categorie_photo=$this->input->post('id_categorie_photo');
+            
+             $data=array( 
+                          'titre_photo' =>$titre_photo,
+                          'id_categorie_photo' =>$id_categorie_photo,
+                              
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+            
+
+        $this->administration_model->modifier_photo($id_photo,$data);
+
+        $data["id_photo"]=$id_photo;
         $data["info_photo_id"]=$this->administration_model->getInfo_photo_id($id_photo);
         $data["pg_content"]="pg_nos_photos_modifier_view";
         $this->load->view("main_view",$data);
+            
+
+        }else{
+
+        $data["id_photo"]=$id_photo;
+        $data["info_photo_id"]=$this->administration_model->getInfo_photo_id($id_photo);
+        $data["pg_content"]="pg_nos_photos_modifier_view";
+        $this->load->view("main_view",$data);
+
+        }
     }
 
 
@@ -1067,10 +1322,59 @@ class Administration extends MX_Controller {
 
 
     function videoModifier($id_video){
-        
+      $this->form_validation->set_rules('titre_video', 'Titre video', 'trim');
+        $this->form_validation->set_rules('id_categorie_video', 'Catégorie video', 'trim');
+        if ($this->form_validation->run()){
+
+            $titre_video=$this->input->post('titre_video');
+            $id_categorie_video=$this->input->post('id_categorie_video');
+            
+             $data=array( 
+                          'titre_video' =>$titre_video,
+                          'id_categorie_video' =>$id_categorie_video,
+                              
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+            
+
+        $this->administration_model->modifier_video($id_video,$data);
+
+        $data["id_video"]=$id_video;
         $data["info_video_id"]=$this->administration_model->getInfo_video_id($id_video);
         $data["pg_content"]="pg_nos_videos_modifier_view";
         $this->load->view("main_view",$data);
+            
+
+        }else{
+
+        $data["id_video"]=$id_video;
+        $data["info_video_id"]=$this->administration_model->getInfo_video_id($id_video);
+        $data["pg_content"]="pg_nos_videos_modifier_view";
+        $this->load->view("main_view",$data);
+
+        }
     }
 
     function supprim_video($id_video){
@@ -1165,10 +1469,80 @@ class Administration extends MX_Controller {
 
 
     function modifierAdmin($id_administrateur){
+      $this->form_validation->set_rules('nom_administrateur', 'nom administrateur', 'trim');
+        $this->form_validation->set_rules('prenom_administrateur', 'prénoms administrateur', 'trim');
+        $this->form_validation->set_rules('email_administrateur', 'email_administrateur', 'trim');
+
+        $this->form_validation->set_rules('telephone_administrateur', 'telephone administrateur', 'trim');
+        $this->form_validation->set_rules('password_administrateur', 'password administrateur', 'trim');
+        $this->form_validation->set_rules('fonction_administrateur', 'Fonction administrateur', 'trim');
+       
         
-       $data["info_admin_id"]=$this->administration_model->getInfo_admin_id($id_administrateur);
+        if ($this->form_validation->run()){
+
+            $nom_administrateur=$this->input->post('nom_administrateur');
+            $prenom_administrateur=$this->input->post('prenom_administrateur');
+            $email_administrateur=$this->input->post('email_administrateur');
+
+            $telephone_administrateur=$this->input->post('telephone_administrateur');
+            $password_administrateur=$this->input->post('password_administrateur');
+            $fonction_administrateur=$this->input->post('fonction_administrateur');
+            
+             $data=array( 
+                          'nom_administrateur' =>$nom_administrateur,
+                          'prenom_administrateur' =>$prenom_administrateur,
+                          'email_administrateur' =>$email_administrateur,
+
+                          'telephone_administrateur' =>$telephone_administrateur,
+                          'password_administrateur' =>$password_administrateur,
+                          'fonction_administrateur' =>$fonction_administrateur,
+
+                          
+                                
+                        );
+
+
+            $config = array(
+            'upload_path' => '/uploads/logo',
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+            );
+ 
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload())
+            {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success',$data);
+            }
+            else
+            {
+            $error = array('error' => $this->upload->display_errors());
+               
+            }
+
+            
+
+        $this->administration_model->modifier_admin($id_administrateur,$data);
+
+        $data["id_administrateur"]=$id_administrateur;
+        $data["info_admin_id"]=$this->administration_model->getInfo_admin_id($id_administrateur);
         $data["pg_content"]="pg_administrateurs_modifier_view";
         $this->load->view("main_view",$data);
+            
+
+        }else{
+
+        $data["id_administrateur"]=$id_administrateur;
+        $data["info_admin_id"]=$this->administration_model->getInfo_admin_id($id_administrateur);
+        $data["pg_content"]="pg_administrateurs_modifier_view";
+        $this->load->view("main_view",$data);
+
+        }
+        
+       
     }
 
 

@@ -16,6 +16,7 @@
 								</div>
 </div>
 							<div class="row">
+	<form action="<?php echo base_url(); ?>administration/photoModifier/<?php echo $id_photo; ?>" method="POST">
 
 
 								<?php
@@ -59,11 +60,11 @@
 											<div class="row">
 												<div class="col-md-6">
 
-													<input type="hidden" name="id_photo" value="<?php if(isset($info->id_photo)) echo $info->id_photo; ?>">
+													<input type="hidden" name="id_photo" value="<?php if(isset($id_photo)) echo $id_photo; ?>">
 
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre de la photo" value="<?php if(isset($info->titre_photo)) echo $info->titre_photo; ?>">
+														<input type="text" class="form-control is-invalid state-invalid" name="titre_photo" placeholder="Titre de la photo" value="<?php if(isset($info->titre_photo)) echo $info->titre_photo; ?>">
 													</div>
 													
 												</div>
@@ -72,7 +73,7 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Catégorie de la photo" value="<?php if(isset($info->id_categorie_photo)) echo $info->id_categorie_photo; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="id_categorie_photo" placeholder="Catégorie de la photo" value="<?php if(isset($info->id_categorie_photo)) echo $info->id_categorie_photo; ?>" >
 													</div>
 
 													<?php }
@@ -85,10 +86,11 @@
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</button></li>
 														</ul>
 												</div>
 											</div>
+											</form>
 										</div>
 									</div>
 									

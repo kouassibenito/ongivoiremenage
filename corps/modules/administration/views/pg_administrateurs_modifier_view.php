@@ -15,7 +15,7 @@
 								</div>
                              </div>
 							<div class="row">
-
+ <form action="<?php echo base_url(); ?>administration/modifierAdmin/<?php echo $id_administrateur; ?>" method="POST">
 								<?php
 
 														             if(isset($info_admin_id)){
@@ -57,28 +57,28 @@
 											<div class="row">
 												<div class="col-md-6">
 
-													<input type="hidden" name="id_administrateur" value="<?php if(isset($info->id_administrateur)) echo $info->id_administrateur; ?>">
+													<input type="hidden" name="id_administrateur" value="<?php if(isset($id_administrateur)) echo $id_administrateur; ?>">
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Nom" value="<?php if(isset($info->nom_administrateur)) echo $info->nom_administrateur; ?>">
+														<input type="text" class="form-control is-invalid state-invalid" name="nom_administrateur" placeholder="Nom" value="<?php if(isset($info->nom_administrateur)) echo $info->nom_administrateur; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Prénoms" value="<?php if(isset($info->prenom_administrateur)) echo $info->prenom_administrateur; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="prenom_administrateur" placeholder="Prénoms" value="<?php if(isset($info->prenom_administrateur)) echo $info->prenom_administrateur; ?>" >
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="E-mail" value="<?php if(isset($info->email_administrateur)) echo $info->email_administrateur; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="email_administrateur" placeholder="E-mail" value="<?php if(isset($info->email_administrateur)) echo $info->email_administrateur; ?>" >
 													</div>
 													
 												</div>
 
                                                 <div class="col-md-6">
 												  <div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Téléphone" value="<?php if(isset($info->telephone_administrateur)) echo $info->telephone_administrateur; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="telephone_administrateur" placeholder="Téléphone" value="<?php if(isset($info->telephone_administrateur)) echo $info->telephone_administrateur; ?>" >
 													</div>
 
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Fonction" value="<?php if(isset($info->fonction_administrateur)) echo $info->fonction_administrateur; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="fonction_administrateur" placeholder="Fonction" value="<?php if(isset($info->fonction_administrateur)) echo $info->fonction_administrateur; ?>" >
 													</div>
 
 												</div>
@@ -96,10 +96,11 @@
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</button></li>
 														</ul>
 												</div>
 											</div>
+											</form>
 										</div>
 									</div>
 									

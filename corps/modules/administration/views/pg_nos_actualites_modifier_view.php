@@ -14,8 +14,11 @@
 									</div>
 								</div>
 </div>
+
+
 							<div class="row">
-	<?php //echo form_open_multipart("administration/nosActualitesModifier/$id_actualite"); ?> 
+   <form action="<?php echo base_url(); ?>administration/nosActualitesModifier/<?php echo $id_actualite; ?>" method="POST">
+	
 								<?php
 
 														             if(isset($info_actualite_id)){
@@ -60,7 +63,7 @@
 											<div class="row">
 												<div class="col-md-6">
 
-													<input type="hidden" name="id_actualite" value="<?php if(isset($info->id_actualite)) echo $info->id_actualite; ?>">
+													<input type="hidden" name="id_actualite" value="<?php if(isset($id_actualite)) echo $id_actualite; ?>">
 
 													<div class="form-group">
 														<input type="text" class="form-control is-invalid state-invalid" name="titre" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>">
@@ -104,7 +107,7 @@
 														</ul>
 												</div>
 											</div>
-											<?php echo form_close(); ?>
+									</form>
 										</div>
 									</div>
 									

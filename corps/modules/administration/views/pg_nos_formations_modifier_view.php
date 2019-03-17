@@ -15,7 +15,7 @@
 								</div>
 </div>
 							<div class="row">
-
+<form action="<?php echo base_url(); ?>administration/formationModifier/<?php echo $id_formation; ?>" method="POST">
 
 								<?php
 
@@ -58,16 +58,16 @@
 											<div class="row">
 												<div class="col-md-6">
 
-													<input type="hidden" name="id_formation" value="<?php if(isset($info->id_formation)) echo $info->id_formation; ?>">
+													<input type="hidden" name="id_formation" value="<?php if(isset($id_formation)) echo $id_formation; ?>">
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>">
+														<input type="text" class="form-control is-invalid state-invalid" name="titre" placeholder="Titre" value="<?php if(isset($info->titre)) echo $info->titre; ?>">
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Date" value="<?php if(isset($info->date_formation)) echo $info->date_formation; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="date_formation" placeholder="Date" value="<?php if(isset($info->date_formation)) echo $info->date_formation; ?>" >
 													</div>
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Auteur" value="<?php if(isset($info->auteur)) echo $info->auteur; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="auteur" placeholder="Auteur" value="<?php if(isset($info->auteur)) echo $info->auteur; ?>" >
 													</div>
 													
 												</div>
@@ -75,17 +75,17 @@
 													
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Cible" value="<?php if(isset($info->cible)) echo $info->cible; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="cible" placeholder="Cible" value="<?php if(isset($info->cible)) echo $info->cible; ?>" >
 													</div>
 
 													<div class="form-group">
-														<input type="text" class="form-control is-invalid state-invalid" name="input" placeholder="Description courte" value="<?php if(isset($info->description_court)) echo $info->description_court; ?>" >
+														<input type="text" class="form-control is-invalid state-invalid" name="description_court" placeholder="Description courte" value="<?php if(isset($info->description_court)) echo $info->description_court; ?>" >
 													</div>
 
 													
 												</div>
 												<div class="col-md-12">
-													<textarea class="form-control is-invalid state-invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."><?php if(isset($info->description_complete)) echo $info->description_complete; ?></textarea>
+													<textarea class="form-control is-invalid state-invalid" name="description_complete" id="exampleFormControlTextarea1" rows="3" placeholder="Description complète ..."><?php if(isset($info->description_complete)) echo $info->description_complete; ?></textarea>
 												</div>
 
 												<?php }
@@ -98,10 +98,11 @@
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
 															
-															<li class="next list-inline-item float-right"><a href="#" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</a></li>
+															<li class="next list-inline-item float-right"><button type="submit" class="btn btn-primary mb-0 waves-effect waves-light">Modifier</button></li>
 														</ul>
 												</div>
 											</div>
+											</form>
 										</div>
 									</div>
 									
