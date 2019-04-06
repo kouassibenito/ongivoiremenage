@@ -159,7 +159,7 @@
 			
 
 			<!-- actualite2 -->
-			<?php include("tpl_actualites2.php"); ?> 
+			<?php //include("tpl_actualites2.php"); ?> 
 			<!-- end actualite2 -->
 			
 
