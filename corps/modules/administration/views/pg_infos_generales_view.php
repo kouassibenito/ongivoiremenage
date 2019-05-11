@@ -6,7 +6,7 @@
 								
 </div>
 							<div class="row">
-								<?php echo form_open_multipart('administration/infosGenerales'); ?> 
+								
 								<div class="col-lg-12">
 									<div class="card shadow">
 										<div class="card-header">
@@ -29,16 +29,55 @@
                                                                 $img=$logo;
                                                               }
 												             ?>
-										<div class="card-body">
+
+
+									    <?php 
+                                            if($logo <> "" || !empty($logo)){ ?>
+
+                                            	<div  class="row">
+
+                                            		<div class="col-md-6" style="text-align:center;">
+							                          <img style="margin-top: 25px;" src="<?php echo base_url(); ?>uploads/logo/<?php echo $img; ?>">
+				                                    </div>
+				                                    <div class="col-md-6">
+							                           <form action="<?php echo base_url(); ?>administration/upload_logo" class="dropzone">
+							                                            <div class="fallback">
+							                                                <input name="file" type="file" multiple />
+				                                            </div>
+				                                        </form>
+				                                    </div>
+                                               </div>
+
+                                            	
+										
+
+										 <?php }else{ ?>
+
+										 	<div class="card-body">
 											
-											<input type="file" name="userfile" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/logo/<?php echo $img; ?>" data-height="300"  />
+											<div  class="row">
+				                                    <div class="col-sm">
+				                           <form action="<?php echo base_url(); ?>administration/upload_logo" class="dropzone">
+				                                            <div class="fallback">
+				                                                <input name="file" type="file" multiple />
+				                                            </div>
+				                                        </form>
+				                                    </div>
+                                               </div>
 										</div>
+
+										  <?php   }
+    
+                                          ?>
 									</div>
 								</div>
                                     
 							</div>
+
+
 							<div class="row">
 								<div class="col-md-12">
+									<form action="<?php echo base_url(); ?>administration/infosGenerales" method="POST">
 									<div class="card shadow">
 										<div class="card-header">
 											<h2 class="mb-0">Formulaire</h2>
@@ -123,26 +162,15 @@
 														</ul>
 												</div>
 											</div>
-											<?php echo form_close(); ?>
+											
 										</div>
 									</div>
-									
+									</form>
 								</div>
+							
 							</div>
 <!-- file uploads js -->
     <script src="<?php echo base_url(); ?>assets/administration/plugins/jquery/dist/jquery.min.js"></script>
+
     
-    <script src="<?php echo base_url(); ?>assets/administration/plugins/fileuploads/js/dropify.min.js"></script>
-							<script>
-		$('.dropify').dropify({
-			messages: {
-				
-				'replace': 'Cliquer/déposer ou remplacer le logo',
-				'remove': 'Supprimer',
-				'error': 'Ooops, something wrong appended.'
-			},
-			error: {
-				'fileSize': 'The file size is too big (2M max).'
-			}
-		});
-	</script>
+   

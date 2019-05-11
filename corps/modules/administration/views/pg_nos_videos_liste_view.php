@@ -46,6 +46,7 @@
                                                                         $compt=0;
 															            foreach ($listeVideos as $info) {
 															            	$compt++;
+
 			                                                              
 															    ?>
 
@@ -53,7 +54,7 @@
 																<tr>
 																	<td><?php echo $compt; ?></td>
 																	<td><?php if(isset($info->titre_video)) echo substr($info->titre_video, 0,25)." ..."; ?></td>
-																	<td><img src="<?php echo base_url(); ?>uploads/video/<?php if(isset($info->video)) echo $info->video; ?>" width="100px;"></td>
+																	<td><img src="<?php echo base_url(); ?>uploads/video/<?php if(isset($nom_image)) echo $nom_image; ?>" width="100px;"></td>
 																	<td><?php if(isset($info->id_categorie_video)) echo $info->id_categorie_video; ?></td>
 																	
 																	<td class="text-nowrap">

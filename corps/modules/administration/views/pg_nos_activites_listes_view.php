@@ -41,12 +41,15 @@
 															</thead>
 															<tbody>
 
-																<?php
+											<?php
 
-														             if(isset($listeActivite)){
-                                                                        $compt=0;
-															            foreach ($listeActivite as $info) {
-															            	$compt++;
+											     if(isset($listeActivite)){
+                                                       $compt=0;
+															 foreach ($listeActivite as $info) {
+															          $compt++;
+
+															        $cle_img=$info->cle_img;
+			                                                       $nom_image=$this->administration_model->nom_images($cle_img);
 			                                                              
 															    ?>
 
@@ -54,7 +57,7 @@
 																<tr>
 																	<td><?php echo $compt; ?></td>
 																	<td><?php if(isset($info->nom_activite)) echo substr($info->nom_activite, 0,25)." ..."; ?></td>
-																	<td><img src="<?php echo base_url(); ?>uploads/activite/<?php if(isset($info->image)) echo $info->image; ?>" width="100px;"></td>
+																	<td><img src="<?php echo base_url(); ?>uploads/activite/<?php if(isset($nom_image)) echo $nom_image; ?>" width="100px;"></td>
 																	<td><?php if(isset($info->description_court)) echo substr($info->description_court, 0,25)." ..."; ?></td>
 																	<td class="text-nowrap"><?php if(isset($info->description_complete)) echo substr($info->description_complete, 0,25)." ..."; ?></td>
 																	<td class="text-nowrap">

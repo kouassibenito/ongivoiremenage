@@ -11,17 +11,22 @@
 
 						              if(isset($photo)){
 
-							             foreach ($photo as $info) { ?>
+							             foreach ($photo as $info) { 
+                                            
+                                             $cle_img=$info->cle_img;
+			                       $nom_image=$this->corporate_model->nom_images($cle_img);
+
+							             	?>
 
 								<div class="isotope-item col-lg-4 col-md-6 col-sm-12 category-1">
 									<div class="vertical-item gallery-item content-absolute text-center ds">
-										<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/photo/<?php if(isset($info->photo)) echo $info->photo; ?>" alt="">
+										<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/photo/<?php if(isset($nom_image)) echo $nom_image; ?>" alt="">
 											<div class="media-links">
-												<div class="links-wrap"> <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="<?php echo base_url(); ?>uploads/photo/<?php if(isset($info->photo)) echo $info->photo; ?>"></a> </div>
+												<div class="links-wrap"> <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[gal]" href="<?php echo base_url(); ?>uploads/photo/<?php if(isset($info->photo)) echo $info->photo; ?>"></a> </div>
 											</div>
 										</div>
 										<div class="item-content">
-											<h4> <a href="gallery-single.html"><?php if(isset($info->titre_photo)) echo $info->titre_photo; ?></a> </h4>
+											<h4> <a href=""><?php if(isset($info->titre_photo)) echo $info->titre_photo; ?></a> </h4>
 										</div>
 									</div>
 								</div>

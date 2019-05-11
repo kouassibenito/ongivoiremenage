@@ -47,6 +47,9 @@
                                                                         $compt=0;
 															            foreach ($listeActualite as $info) {
 															            	$compt++;
+
+															            	$cle_img=$info->cle_img;
+			                                                       $nom_image=$this->administration_model->nom_images($cle_img);
 			                                                              
 															    ?>
 

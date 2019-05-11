@@ -41,6 +41,7 @@
 	<!-- form Uploads -->
     <link href="<?php echo base_url(); ?>assets/administration/plugins/fileuploads/css/dropify.css" rel="stylesheet" type="text/css" />
 
+   <link href="<?php echo base_url(); ?>assets/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="app sidebar-mini rtl" >
 	<div id="global-loader" ></div>
@@ -139,6 +140,8 @@
 	<!-- Ansta JS -->
 	<script src="<?php echo base_url(); ?>assets/administration/js/custom.js"></script>
 	<script src="<?php echo base_url(); ?>assets/administration/js/dashboard-sales.js"></script>
+
+	<script src="<?php echo base_url(); ?>assets/dropzone/dropzone.js"></script>
 
 	
 

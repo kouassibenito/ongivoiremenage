@@ -105,11 +105,17 @@
 
 						             if(isset($actualite)){
 
-							            foreach ($actualite as $info) { ?>
+							            foreach ($actualite as $info) { 
+                                              
+
+								$cle_img=$info->cle_img;
+			                       $nom_image=$this->corporate_model->nom_images($cle_img);
+
+							            	?>
 
 								<div class="isotope-item col-lg-4 col-md-6 col-sm-12">
 									<article class="post vertical-item content-padding with_border bottom_color_border loop-color">
-										<div class="item-media entry-thumbnail"> <img src="<?php echo base_url(); ?>uploads/actualites/<?php if(isset($info->image)) echo $info->image; ?>" alt=""> </div>
+										<div class="item-media entry-thumbnail"> <img src="<?php echo base_url(); ?>uploads/actualites/<?php if(isset($nom_image)) echo $nom_image; ?>" alt=""> </div>
 										<div class="item-content">
 											<header class="entry-header">
 												<h4 class="entry-title small"> <a href="<?php echo base_url(); ?>corporate/nosActualites_descrip_complete/<?php if(isset($info->id_actualite)) echo $info->id_actualite; ?>" rel="bookmark"><?php if(isset($info->titre)) echo $info->titre; ?></a> </h4>

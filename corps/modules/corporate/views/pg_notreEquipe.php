@@ -100,12 +100,18 @@
                        <?php
 
 						if(isset($notreequipe)){
+                            
+							foreach ($notreequipe as $info) {
 
-							foreach ($notreequipe as $info) { ?>
+								$cle_img=$info->cle_img;
+			                       $nom_image=$this->corporate_model->nom_images($cle_img);
+                                 
+
+							 ?>
 
 						<div class="col-sm-6 col-md-4">
 							<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
-								<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/equipe/<?php if(isset($info->photo)) echo $info->photo; ?>" alt=""> </div>
+								<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/equipe/<?php if(isset($nom_image)) echo $nom_image; ?>" alt=""> </div>
 								<div class="item-content">
 									<header class="entry-header">
 										<h3 class="entry-title small bottommargin_0"> <a href="team-single.html"><?php if(isset($info->nom)) echo $info->nom; ?></a> </h3> <span class="small-text highlight"><?php if(isset($info->titre)) echo $info->titre; ?></span> </header>

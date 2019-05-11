@@ -27,6 +27,41 @@ class Administration extends MX_Controller {
         
     }
 
+      public function upload_logo()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/logo';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        
+                     
+            
+   
+                        $image_name= $fichier['file_name'];
+
+        $id_infos="1234";
+        $data=array( 
+                          
+                          'logo' =>$image_name,
+                                
+                    );
+                        
+                        
+            
+
+        
+        $this->administration_model->modifier_infos_generale($id_infos,$data);
+                
+        }
+  }
+
   
      function infosGenerales(){
 
@@ -150,9 +185,6 @@ class Administration extends MX_Controller {
     function sliders(){
         
 
-
-
-
         $this->form_validation->set_rules('titre1', 'Titre 1', 'trim');
         $this->form_validation->set_rules('titre2', 'Titre 2', 'trim');
         $this->form_validation->set_rules('titre3', 'Titre 3', 'trim');
@@ -165,6 +197,8 @@ class Administration extends MX_Controller {
             $titre2=$this->input->post('titre2');
             $titre3=$this->input->post('titre3');
             $titre4=$this->input->post('titre4');
+            $cle_img=$this->input->post('cle_img');
+            
             
 
              $data=array( 
@@ -172,31 +206,13 @@ class Administration extends MX_Controller {
                           'titre2' =>$titre2,
                           'titre3' =>$titre3,
                           'titre4' =>$titre4,
+                          'cle_img' =>$cle_img,
                           
                                 
                         );
 
 
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
+           
 
             
 
@@ -213,7 +229,8 @@ class Administration extends MX_Controller {
 
         }else{
 
-
+         
+        $data["cle_img"]=$this->administration_model->clePrimaire(8);
         $data["pg_content"]="pg_sliders_ajouter_view";
         $this->load->view("main_view",$data);
        
@@ -247,35 +264,13 @@ class Administration extends MX_Controller {
                         );
 
 
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
-
-
-
+            
              $this->administration_model->modifier_sliders($id_slide,$data);
 
 
             
 
-               $data["listeSliders"]=$this->administration_model->getInfo_sliders();
+              $data["listeSliders"]=$this->administration_model->getInfo_sliders();
               $data["pg_content"]="pg_sliders_liste_view";  
               $this->load->view("main_view",$data);
 
@@ -314,6 +309,62 @@ class Administration extends MX_Controller {
 
    }
 
+   public function upload_equipe()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/equipe';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                  $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+       
+      }
+
+    }
+
+
+    public function upload_notreEquipe_modifier()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/equipe';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->modifier_image($cle_img,$data);
+
+       
+      }
+
+    }
+
 
     function notreEquipe(){
 
@@ -331,6 +382,7 @@ class Administration extends MX_Controller {
             $titre=$this->input->post('titre');
             $facebook=$this->input->post('facebook');
             $twitter=$this->input->post('twitter');
+            $cle_img=$this->input->post('cle_img');
             
 
              $data=array( 
@@ -338,31 +390,11 @@ class Administration extends MX_Controller {
                           'titre' =>$titre,
                           'facebook' =>$facebook,
                           'twitter' =>$twitter,
+                          'cle_img' =>$cle_img,
                           
                                 
                         );
 
-
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
 
             
 
@@ -379,7 +411,7 @@ class Administration extends MX_Controller {
 
         }else{
 
-
+        $data["cle_img"]=$this->administration_model->clePrimaire(8);
         $data["pg_content"]="pg_notre_equipe_ajouter_view";
         $this->load->view("main_view",$data);
        
@@ -414,27 +446,6 @@ class Administration extends MX_Controller {
                                 
                         );
 
-
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
 
 
 
@@ -494,6 +505,7 @@ class Administration extends MX_Controller {
             $cible=$this->input->post('cible');
             $description_court=$this->input->post('description_court');
             $description_complete=$this->input->post('description_complete');
+            $cle_img=$this->input->post('cle_img');
             
 
              $data=array( 
@@ -503,33 +515,13 @@ class Administration extends MX_Controller {
                           'cible' =>$cible,
                           'description_court' =>$description_court,
                           'description_complete' =>$description_complete,
-
+                          'cle_img' =>$cle_img,
                           
                                 
                         );
 
 
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
-
+            
             
 
              $this->administration_model->ajoutActualite($data);
@@ -545,7 +537,7 @@ class Administration extends MX_Controller {
 
         }else{
 
-
+        $data["cle_img"]=$this->administration_model->clePrimaire(8);
         $data["pg_content"]="pg_nos_actualites_ajouter_view";
         $this->load->view("main_view",$data);
 
@@ -586,28 +578,6 @@ class Administration extends MX_Controller {
                           
                                 
                         );
-
-
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
 
 
 
@@ -661,13 +631,14 @@ class Administration extends MX_Controller {
             $nom_activite=$this->input->post('nom_activite');
             $description_court=$this->input->post('description_court');
             $description_complete=$this->input->post('description_complete');
-            
+            $cle_img=$this->input->post('cle_img');
             
 
              $data=array( 
                           'nom_activite' =>$nom_activite,
                           'description_court' =>$description_court,
                           'description_complete' =>$description_complete,
+                          'cle_img' =>$cle_img,
                           
 
                           
@@ -675,26 +646,8 @@ class Administration extends MX_Controller {
                         );
 
 
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
+            
+
 
             
 
@@ -711,6 +664,7 @@ class Administration extends MX_Controller {
 
         }else{
 
+        $data["cle_img"]=$this->administration_model->clePrimaire(8);
         $data["pg_content"]="pg_nos_activites_ajouter_view";
         $this->load->view("main_view",$data);
 
@@ -741,27 +695,6 @@ class Administration extends MX_Controller {
                                 
                         );
 
-
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
 
             
 
@@ -814,40 +747,20 @@ class Administration extends MX_Controller {
             $nom_projet=$this->input->post('nom_projet');
             $description_court=$this->input->post('description_court');
             $description_complete=$this->input->post('description_complete');
-            
+            $cle_img=$this->input->post('cle_img');
             
 
              $data=array( 
                           'nom_projet' =>$nom_projet,
                           'description_court' =>$description_court,
                           'description_complete' =>$description_complete,
+                          'cle_img' =>$cle_img,
                           
 
                           
                                 
                         );
 
-
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
 
             
 
@@ -862,7 +775,7 @@ class Administration extends MX_Controller {
 
         }else{
 
-
+        $data["cle_img"]=$this->administration_model->clePrimaire(8);
         $data["pg_content"]="pg_nos_projets_ajouter_view";
         $this->load->view("main_view",$data);
 
@@ -892,28 +805,6 @@ class Administration extends MX_Controller {
                           
                                 
                         );
-
-
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
 
             
 
@@ -971,50 +862,28 @@ class Administration extends MX_Controller {
             $cible=$this->input->post('cible');
             $description_court=$this->input->post('description_court');
             $description_complete=$this->input->post('description_complete');
+            $cle_img=$this->input->post('cle_img');
             
             
 
              $data=array( 
-                          'titre' =>$nom_projet,
+                          'titre' =>$titre,
                           'date_formation' =>$description_court,
                           'auteur' =>$description_complete,
 
-                          'cible' =>$nom_projet,
+                          'cible' =>$cible,
                           'description_court' =>$description_court,
                           'description_complete' =>$description_complete,
+                          'cle_img' =>$cle_img,
                           
-
-                          
-                                
                         );
 
 
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
+            
 
             
 
              $this->administration_model->ajoutFormation($data);
-            
-
               $data["listeFormation"]=$this->administration_model->getInfo_formation();
               $data["pg_content"]="pg_nos_formations_ajouter_view";
               $this->load->view("main_view",$data);
@@ -1023,7 +892,7 @@ class Administration extends MX_Controller {
 
         }else{
 
-
+        $data["cle_img"]=$this->administration_model->clePrimaire(8);
         $data["pg_content"]="pg_nos_formations_ajouter_view";
         $this->load->view("main_view",$data);
 
@@ -1067,28 +936,6 @@ class Administration extends MX_Controller {
                           
                                 
                         );
-
-
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
 
             
 
@@ -1135,36 +982,18 @@ class Administration extends MX_Controller {
 
             $titre_photo=$this->input->post('titre_photo');
             $id_categorie_photo=$this->input->post('id_categorie_photo');
+            $cle_img=$this->input->post('cle_img');
             
              $data=array( 
                           'titre_photo' =>$titre_photo,
                           'id_categorie_photo' =>$id_categorie_photo,
+                          'cle_img' =>$cle_img,
                           
                              
                         );
 
 
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
-
+            
             
 
              $this->administration_model->ajoutPhoto($data);
@@ -1178,7 +1007,7 @@ class Administration extends MX_Controller {
 
         }else{
 
-
+        $data["cle_img"]=$this->administration_model->clePrimaire(8);
         $data["pg_content"]="pg_nos_photos_ajouter_view";
         $this->load->view("main_view",$data);
 
@@ -1202,29 +1031,6 @@ class Administration extends MX_Controller {
                               
                         );
 
-
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
-
-            
 
         $this->administration_model->modifier_photo($id_photo,$data);
 
@@ -1269,38 +1075,18 @@ class Administration extends MX_Controller {
 
             $titre_video=$this->input->post('titre_video');
             $id_categorie_video=$this->input->post('id_categorie_video');
+             $iframe_youtube=$this->input->post('iframe_youtube');
             
              $data=array( 
                           'titre_video' =>$titre_video,
                           'id_categorie_video' =>$id_categorie_video,
+                          'iframe_youtube' =>$iframe_youtube,
                           
                              
                         );
 
 
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
-
-            
-
+           
              $this->administration_model->ajoutVideo($data);
             
 
@@ -1312,7 +1098,7 @@ class Administration extends MX_Controller {
 
         }else{
 
-
+        $data["cle_img"]=$this->administration_model->clePrimaire(8);
         $data["pg_content"]="pg_nos_videos_ajouter_view";
         $this->load->view("main_view",$data);
 
@@ -1328,35 +1114,17 @@ class Administration extends MX_Controller {
 
             $titre_video=$this->input->post('titre_video');
             $id_categorie_video=$this->input->post('id_categorie_video');
+            $iframe_youtube=$this->input->post('iframe_youtube');
             
              $data=array( 
                           'titre_video' =>$titre_video,
                           'id_categorie_video' =>$id_categorie_video,
+                          'iframe_youtube' =>$iframe_youtube,
                               
                         );
 
 
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
-
+            
             
 
         $this->administration_model->modifier_video($id_video,$data);
@@ -1410,6 +1178,7 @@ class Administration extends MX_Controller {
 
             $password_administrateur=$this->input->post('password_administrateur');
             $fonction_administrateur=$this->input->post('fonction_administrateur');
+            $cle_img=$this->input->post('cle_img');
             
             $data=array( 
                           'nom_administrateur' =>$nom_administrateur,
@@ -1419,33 +1188,14 @@ class Administration extends MX_Controller {
 
                           'password_administrateur' =>$password_administrateur,
                           'fonction_administrateur' =>$fonction_administrateur,
+                          'cle_img' =>$cle_img,
                           
                           
                              
                         );
 
 
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
-
+            
             
 
              $this->administration_model->ajoutAdmin($data);
@@ -1459,7 +1209,7 @@ class Administration extends MX_Controller {
 
         }else{
 
-
+             $data["cle_img"]=$this->administration_model->clePrimaire(8);
              $data["pg_content"]="pg_administrateurs_ajouter_view";
              $this->load->view("main_view",$data);
 
@@ -1500,28 +1250,6 @@ class Administration extends MX_Controller {
                           
                                 
                         );
-
-
-            $config = array(
-            'upload_path' => '/uploads/logo',
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
-            );
- 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload())
-            {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success',$data);
-            }
-            else
-            {
-            $error = array('error' => $this->upload->display_errors());
-               
-            }
 
             
 
@@ -1615,6 +1343,94 @@ class Administration extends MX_Controller {
 
     //liste
 
+ public function upload_slide()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/sliders';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+
+       
+      }
+
+    }
+
+     public function upload_slide_modifier()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/sliders';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->modifier_image($cle_img,$data);
+
+       
+      }
+
+    }
+
+
+
+public function upload_slideModifier()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/sliders';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+
+       
+      }
+
+    }
+
+
+
     
     function slidersListes(){
 
@@ -1632,11 +1448,126 @@ class Administration extends MX_Controller {
         
     }
 
+
+    public function upload_actualite()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/actualites';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        
+                $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+                $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+       
+      }
+
+    }
+
+
+public function upload_actualite_modifier()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/actualites';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->modifier_image($cle_img,$data);
+
+       
+      }
+
+    }
+
+
     function nosActualitesListes(){
 
         $data["listeActualite"]=$this->administration_model->getInfo_actualite();
         $data["pg_content"]="pg_nos_actualites_liste_view";
         $this->load->view("main_view",$data);
+    }
+
+   public function upload_activite()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/activite';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        
+                  $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+                $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+       
+      }
+
+    }
+
+
+
+public function upload_activite_modifier()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/activite';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->modifier_image($cle_img,$data);
+
+       
+      }
+
     }
 
 
@@ -1647,6 +1578,64 @@ class Administration extends MX_Controller {
         $this->load->view("main_view",$data);
     }
 
+public function upload_projet()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/projet';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        
+                     
+            $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+                $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+       
+      }
+
+    }
+
+
+public function upload_projet_modifier()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/projet';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->modifier_image($cle_img,$data);
+
+       
+      }
+
+    }
+
+
 
     function nosProjetsListes(){
 
@@ -1656,6 +1645,65 @@ class Administration extends MX_Controller {
     }
 
 
+public function upload_formation()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/modules de formation';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        
+                     
+            
+        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+                $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+       
+      }
+
+    }
+
+
+
+public function upload_formation_modifier()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/modules de formation';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->modifier_image($cle_img,$data);
+
+       
+      }
+
+    }
+
 
     function nosFormationsListes(){
 
@@ -1664,6 +1712,64 @@ class Administration extends MX_Controller {
         $this->load->view("main_view",$data);
     }
 
+    public function upload_photo()
+      {
+          if (!empty($_FILES)) {
+              $targetPath = getcwd() . '/uploads/photo';
+              $config['allowed_types'] = 'gif|jpg|jpeg|png';
+              $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+              $config['upload_path'] = $targetPath;
+              $config['allowed_types'] = 'jpg|png';
+              $this->load->library('upload', $config);
+              $this->upload->initialize($config);
+              if ($this->upload->do_upload('file')) {
+                  $fichier = $this->upload->data();
+              }
+                          
+                       
+              
+            $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+                $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+
+         
+        }
+
+      }
+
+
+    public function upload_photo_modifier()
+        {
+          if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/photo';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->modifier_image($cle_img,$data);
+
+       
+      }
+
+    }
 
     function nosPhotosListes(){
 
@@ -1672,6 +1778,65 @@ class Administration extends MX_Controller {
         $this->load->view("main_view",$data);
     }
 
+public function upload_video()
+      {
+          if (!empty($_FILES)) {
+              $targetPath = getcwd() . '/uploads/video';
+              $config['allowed_types'] = 'gif|jpg|jpeg|png';
+              $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+              $config['upload_path'] = $targetPath;
+              $config['allowed_types'] = 'jpg|png';
+              $this->load->library('upload', $config);
+              $this->upload->initialize($config);
+              if ($this->upload->do_upload('file')) {
+                  $fichier = $this->upload->data();
+              }
+                          
+                       
+              $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+                $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+
+         
+        }
+
+      }
+
+
+public function upload_video_modifier()
+        {
+          if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/video';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->modifier_image($cle_img,$data);
+
+       
+      }
+
+    }
+
+
 
     function nosVideosListes(){
 
@@ -1679,6 +1844,66 @@ class Administration extends MX_Controller {
         $data["pg_content"]="pg_nos_videos_liste_view";
         $this->load->view("main_view",$data);
     }
+
+    public function upload_admin()
+    {
+        if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/img_admin';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        
+                     
+            $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+                $data=array( 
+                          'cle_img' =>$cle_img,
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->ajoutImage($data);
+
+       
+      }
+
+    }
+
+
+public function upload_admin_modifier()
+        {
+          if (!empty($_FILES)) {
+            $targetPath = getcwd() . '/uploads/img_admin';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['file_name'] = date("Y_m_d_H_i_s_").rand();
+            $config['upload_path'] = $targetPath;
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('file')) {
+                $fichier = $this->upload->data();
+            }
+                        $cle_img=$this->input->post('cle_img');
+                        $image_name= $fichier['file_name'];
+
+                        $data=array( 
+                          
+                          'img' =>$image_name,
+                        );
+
+          $this->administration_model->modifier_image($cle_img,$data);
+
+       
+      }
+
+    }
+
+
 
     function adminListes(){
 

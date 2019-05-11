@@ -14,39 +14,62 @@
 									</div>
 								</div>
                              </div>
-							<div class="row">
- <form action="<?php echo base_url(); ?>administration/modifierAdmin/<?php echo $id_administrateur; ?>" method="POST">
-								<?php
 
-														             if(isset($info_admin_id)){
-                                                                        
-															            foreach ($info_admin_id as $info) {
+                             <?php  
 
-															            	 $imgs =$info->image ;
-				                                                              if(empty($imgs) || $imgs==""){
+											if(isset($info_admin_id)){
 
-				                                                              	$image="1.jpg";
+												foreach ($info_admin_id as $info) { 
 
-				                                                              }else{
 
-				                                                                $image=$imgs;
-				                                                              }
-															            	
-			                                                              
-															    ?>
+													$cle_images=$info->cle_img;
+                                                    
+                                                    if($this->administration_model->nom_images($cle_images)){
+
+                                                    	$img=$this->administration_model->nom_images($cle_images);
+
+                                                    }else{
+
+                                                    	$img="sans.jpg";
+                                                    }
+
+													?>
+									<div class="row">
 								
-								<div class="col-lg-12">
+								<div class="col-md-6">
 									<div class="card shadow">
 										<div class="card-header">
-											<h2 class="mb-0">Ajouter/Modifier une image</h2>
+											<h2 class="mb-0">Ajouter/Modifier le slider</h2>
 										</div>
-										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/img_admin/<?php if(isset($image)) echo $image; ?>" data-height="300"  />
+
+										
+									
+
+										 	<div class="card-body">
+											
+											<div  class="row">
+				                                    <div class="col-sm">
+				                           <form action="<?php echo base_url(); ?>administration/upload_admin_modifier" method="POST" class="dropzone">
+				                           		<input name="cle_img" type="hidden" value="<?php echo $cle_images; ?>">
+				                                            <div class="fallback">
+				                                                <input name="file" type="file" multiple />
+				                                            </div>
+				                                        </form>
+				                                    </div>
+                                               </div>
 										</div>
+
+										 
 									</div>
+								</div>
+
+								<div class="col-md-6" style="padding-left:10px;">
+									
+                                    <img width="80%" src="<?php echo base_url(); ?>uploads/img_admin/<?php echo $img; ?>">
 								</div>
                                     
 							</div>
+
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card shadow">
@@ -54,6 +77,13 @@
 											<h2 class="mb-0">Formulaire</h2>
 										</div>
 										<div class="card-body">
+
+
+											<form action="<?php echo base_url(); ?>administration/modifierAdmin/<?php echo $id_administrateur; ?>" method="POST">
+
+											
+
+
 											<div class="row">
 												<div class="col-md-6">
 
@@ -86,9 +116,9 @@
 											</div>
 											
                                             <?php }
-												                    }
+											}
 
-												                ?>
+											?>
 
 
 											</div>
@@ -100,7 +130,9 @@
 														</ul>
 												</div>
 											</div>
-											</form>
+
+										</form>
+											
 										</div>
 									</div>
 									

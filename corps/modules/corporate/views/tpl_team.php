@@ -8,9 +8,13 @@
 
 						if(isset($equipe_accueil)){
 
-							foreach ($equipe_accueil as $dallas) { ?>
+							foreach ($equipe_accueil as $dallas) { 
+
+                                    $cle_img=$dallas->cle_img;
+			                       $nom_image=$this->corporate_model->nom_images($cle_img);
+								?>
 								<article class="vertical-item content-padding big-padding with_border bottom_color_border text-center">
-									<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/equipe/<?php if(isset($dallas->photo )) echo $dallas->photo ; ?>" alt=""> </div>
+									<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/equipe/<?php if(isset($nom_image)) echo $nom_image; ?>" alt=""> </div>
 									<div class="item-content">
 										<header class="entry-header">
 											<h3 class="entry-title small bottommargin_0"> <a href="#"><?php if(isset($dallas->nom )) echo $dallas->nom ; ?></a> </h3> <span class="small-text highlight"><?php if(isset($dallas->titre )) echo $dallas->titre ; ?></span> </header>

@@ -100,11 +100,16 @@
 
 						             if(isset($projets)){
 
-							            foreach ($projets as $info) { ?>
+							            foreach ($projets as $info) { 
+
+                                          $cle_img=$info->cle_img;
+			                       $nom_image=$this->corporate_model->nom_images($cle_img);
+
+							            	?>
 
 						<div class="col-md-4 col-sm-6">
 							<article class="vertical-item content-padding big-padding with_border bottom_color_border loop-color text-center">
-								<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/projet/<?php if(isset($info->image)) echo $info->image; ?>" alt=""> </div>
+								<div class="item-media"> <img src="<?php echo base_url(); ?>uploads/projet/<?php if(isset($nom_image)) echo $nom_image; ?>" alt=""> </div>
 								<div class="item-content">
 									<header class="entry-header">
 										<h3 class="entry-title small"> <a href="<?php echo base_url(); ?>corporate/nosProjet_description/<?php if(isset($info->id_projet)) echo $info->id_projet; ?>"><?php if(isset($info->nom_projet)) echo $info->nom_projet; ?></a> </h3>

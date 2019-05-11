@@ -41,13 +41,14 @@
 															</thead>
 															<tbody>
 
-																<?php
+							<?php
 
-														             if(isset($listeFormation)){
-                                                                        $compt=0;
-															            foreach ($listeFormation as $info) {
-															            	$compt++;
-			                                                              
+								if(isset($listeFormation)){
+                                         $compt=0;
+										   foreach ($listeFormation as $info) {
+												$compt++;
+			                                        $cle_img=$info->cle_img;
+			                                        $nom_image=$this->administration_model->nom_images($cle_img);
 															    ?>
 
 																<tr>

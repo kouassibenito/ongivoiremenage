@@ -582,6 +582,31 @@ public function envoi_mail($to_email,$message){
 
      }
 
+  function nom_images($cle_img){
+
+      
+      $this->db->where('cle_img',$cle_img);
+      $q = $this->db->get('image');
+      if($q->num_rows()>0)
+      {
+          foreach ($q->result() as $lign)
+          {
+              $data[]=$lign;
+          }
+          
+         
+      }
+
+      foreach ($data as $value) {
+        
+        $nom_image=$value->img;
+      }
+
+      return $nom_image;
+
+
+    }
+
 
 
 

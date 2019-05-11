@@ -518,11 +518,56 @@ class Administration_model extends CI_Model {
 
       }
 
+      //images
+      function ajoutImage($data){
+       
+       $this->db->insert('image', $data); 
+       return True;
+
+     }
+
+     function nom_images($cle_img){
+
+      
+      $this->db->where('cle_img',$cle_img);
+      $q = $this->db->get('image');
+      if($q->num_rows()>0)
+      {
+          foreach ($q->result() as $lign)
+          {
+              $data[]=$lign;
+          }
+          
+         
+      }
+
+      foreach ($data as $value) {
+        
+        $nom_image=$value->img;
+      }
+
+      return $nom_image;
+
+
+    }
+
+    function modifier_image($cle_img,$data){
+       
+        $this->db->where('cle_img',$cle_img);
+        $this->db->update('image', $data);
+        return True;
+
+   }
+
 
 
     
+// generateur de clé primaire
+   function clePrimaire( $taille ) {
 
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    return substr(str_shuffle($chars),0,$taille);
 
-  
+    }
 
 }

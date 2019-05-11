@@ -239,14 +239,54 @@ class Corporate extends MX_Controller {
   
 
 
- /* function testmail(){
+// function testmail(){
 
-      $to_email="infoongivoiremenage@gmail.com";
-      $message="test1";
-      $this->envoi_mail($to_email,$message);
-  }*/
+//       $to_email="kouassiyaofabricehonorat@gmail.com";
+//       $message="test1";
+//       $this->envoi_mail($to_email,$message);
+//   }
 
-function envoiemail(){
+  public function envoi_mail($to_email,$message){
+
+        
+
+    $from_email = "infoongivoiremenage@gmail.com";
+    
+    $nom ="Finasys - E library";
+     
+    $subject2 = 'Ong ivoire menage - Formulaire contact';
+     
+    $message_final = $message;
+     
+    $config['protocol'] = 'smtp';
+    $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+    $config['smtp_port'] = '465';
+    $config['smtp_user'] = 'infoongivoiremenage@gmail.com';
+    $config['smtp_pass'] = 'ongivoiremenage2019';
+    $config['mailtype'] = 'html';
+    $config['charset'] = 'utf-8';
+    $config['wordwrap'] = TRUE;
+    $config['newline'] = "\r\n"; //use double quotes
+    $this->load->library('email', $config);
+    
+    $this->email->initialize($config);
+     //send mail
+    $this->email->from($from_email, $nom);
+    $this->email->to($to_email);
+    //$this->email->cc($list);
+    $this->email->subject($subject2);
+    $this->email->message($message_final);
+
+    if (!$this->email->send()) { 
+      show_error($this->email->print_debugger()); 
+     } else { 
+         echo 'Your e-mail has been sent!'; 
+        }
+
+ }
+
+
+function envoiemail_formulaire(){
 
 
 
@@ -263,23 +303,24 @@ function envoiemail(){
             $mail_internaute=$this->input->post('mail_internaute');
             $sujet=$this->input->post('sujet');
             $message=$this->input->post('message');
-            $to_email="infoongivoiremenage@gmail.com";
+            
             $message_envoye=$nom."<br/>".$mail_internaute."<br/>".$sujet."<br/>".$message;
             
            
 
-            $this->Corporate_model->envoi_mail($to_email,$message_envoye);
+            $this->envoi_mail($mail_internaute,$message_envoye);
 
-
-
-            //redirect("corporate");
+             
+            $data["mail"]="success";
+            $data["pg_content"]="tpl_form_contact";
+            $this->load->view("main_view",$data);
             
 
         }else{
 
 
-        $data["pg_content"]="pg_notre_equipe_ajouter_view";
-        $this->load->view("main_view",$data);
+            $data["pg_content"]="tpl_form_contact";
+            $this->load->view("main_view",$data);
        
 
        }

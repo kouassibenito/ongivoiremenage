@@ -58,7 +58,7 @@
 										</div></a>
 										<div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow dropdown-menu-right">
 											<a class="dropdown-item d-flex" href="#">
-												<span class="avatar brround mr-3 align-self-center"> <img src="assets/administration/img/faces/male/4.jpg" alt="imag" ></span>
+												<span class="avatar brround mr-3 align-self-center"><img src="<?php echo base_url(); ?>uploads/img_admin/<?php if(isset($nom_image)) echo $nom_image; ?>" width="20px;"></span>
 												<div>
 													<strong>Madeleine Scott</strong> sent you friend request
 													<div class=" mt-2 small text-muted">

@@ -47,10 +47,12 @@
 															            foreach ($listeSliders as $info) {
 															            	$compt++;
 			                                                              
+			                                                              $cle_img=$info->cle_img;
+			                                                       $nom_image=$this->administration_model->nom_images($cle_img);
 															    ?>
 																<tr>
 																	<td><?php echo $compt; ?></td>
-																	<td><img src="<?php echo base_url(); ?>uploads/sliders/<?php if(isset($info->img)) echo $info->img; ?>" width="100px;"></td>
+																	<td><img src="<?php echo base_url(); ?>uploads/sliders/<?php if(isset($nom_image)) echo $nom_image; ?>" width="100px;"></td>
 																	<td><?php if(isset($info->titre1)) echo substr($info->titre1, 0,10)." ..."; ?></td>
 																	<td><?php if(isset($info->titre2)) echo substr($info->titre2, 0,10)." ..."; ?></td>
 																	<td><?php if(isset($info->titre3)) echo substr($info->titre3, 0,10)." ..."; ?></td>

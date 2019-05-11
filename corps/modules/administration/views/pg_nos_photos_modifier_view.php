@@ -14,42 +14,63 @@
 									</div>
 								</div>
 								</div>
-</div>
-							<div class="row">
-	<form action="<?php echo base_url(); ?>administration/photoModifier/<?php echo $id_photo; ?>" method="POST">
+							</div>
 
+							<?php  
 
-								<?php
+											if(isset($info_photo_id)){
 
-														             if(isset($info_photo_id)){
-                                                                        
-															            foreach ($info_photo_id as $info) {
+												foreach ($info_photo_id as $info) { 
 
-															            	 $imgs =$info->photo ;
-				                                                              if(empty($imgs) || $imgs==""){
+													$cle_images=$info->cle_img;
+                                                    
+                                                    if($this->administration_model->nom_images($cle_images)){
 
-				                                                              	$photo="1.jpg";
+                                                    	$img=$this->administration_model->nom_images($cle_images);
 
-				                                                              }else{
+                                                    }else{
 
-				                                                                $photo=$imgs;
-				                                                              }
-															            	
-			                                                              
-															    ?>
+                                                    	$img="sans.jpg";
+                                                    }
+													
+
+													?>
+										<div class="row">
 								
-								<div class="col-lg-12">
+								<div class="col-md-6">
 									<div class="card shadow">
 										<div class="card-header">
-											<h2 class="mb-0">Ajouter/Modifier l'image</h2>
+											<h2 class="mb-0">Ajouter/Modifier le slider</h2>
 										</div>
-										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/photo/<?php if(isset($photo)) echo $photo; ?>" data-height="300"  />
+
+										
+									
+
+										 	<div class="card-body">
+											
+											<div  class="row">
+				                                    <div class="col-sm">
+				                           <form action="<?php echo base_url(); ?>administration/upload_photo_modifier" method="POST" class="dropzone">
+				                           		<input name="cle_img" type="hidden" value="<?php echo $cle_images; ?>">
+				                                            <div class="fallback">
+				                                                <input name="file" type="file" multiple />
+				                                            </div>
+				                                        </form>
+				                                    </div>
+                                               </div>
 										</div>
+
+										 
 									</div>
+								</div>
+
+								<div class="col-md-6" style="padding-left:10px;">
+									
+                                    <img width="80%" src="<?php echo base_url(); ?>uploads/photo/<?php echo $img; ?>">
 								</div>
                                     
 							</div>
+							
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card shadow">
@@ -57,6 +78,11 @@
 											<h2 class="mb-0">Formulaire</h2>
 										</div>
 										<div class="card-body">
+
+											<form action="<?php echo base_url(); ?>administration/photoModifier/<?php echo $id_photo; ?>" method="POST">
+
+											
+
 											<div class="row">
 												<div class="col-md-6">
 
@@ -76,12 +102,14 @@
 														<input type="text" class="form-control is-invalid state-invalid" name="id_categorie_photo" placeholder="Catégorie de la photo" value="<?php if(isset($info->id_categorie_photo)) echo $info->id_categorie_photo; ?>" >
 													</div>
 
-													<?php }
-												                    }
-
-												                ?>
 												</div>
 											</div>
+
+											<?php }
+											}
+
+											?>
+
 											<div class="row" style="margin-top: 20px;">
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
@@ -90,7 +118,9 @@
 														</ul>
 												</div>
 											</div>
-											</form>
+
+										</form>
+
 										</div>
 									</div>
 									

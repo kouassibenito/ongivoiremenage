@@ -46,6 +46,10 @@
                                                                         $compt=0;
 															            foreach ($listePhotos as $info) {
 															            	$compt++;
+
+															            	$cle_img=$info->cle_img;
+			                                        $nom_image=$this->administration_model->nom_images($cle_img);
+															    ?>
 			                                                              
 															    ?>
 
@@ -53,7 +57,7 @@
 																<tr>
 																	<td><?php echo $compt; ?></td>
 																	<td><?php if(isset($info->titre_photo)) echo substr($info->titre_photo, 0,25)." ..."; ?></td>
-																	<td><img src="<?php echo base_url(); ?>uploads/photo/<?php if(isset($info->photo)) echo $info->photo; ?>" width="100px;"></td>
+																	<td><img src="<?php echo base_url(); ?>uploads/photo/<?php if(isset($nom_image)) echo $nom_image; ?>" width="100px;"></td>
 																	<td><?php if(isset($info->id_categorie_photo)) echo $info->id_categorie_photo; ?></td>
 																	
 																	<td class="text-nowrap">

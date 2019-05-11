@@ -17,14 +17,20 @@
 
 							            $compt=$compt + 1;
 
-							            if($compt == 1){ ?>
+							            if($compt == 1){ 
+                                         
+                                         $cle_img=$info->cle_img;
+			                       $nom_image=$this->corporate_model->nom_images($cle_img);
+
+
+							            	?>
 
 
 							            	<article class="post format-small-image to_animate" data-animation="fadeInRight">
 												<div class="side-item side-md content-padding big-padding with_border bottom_color_border left">
 													<div class="row">
 														<div class="col-md-5 col-lg-4">
-															<div class="item-media entry-thumbnail"> <img src="<?php echo base_url(); ?>uploads/actualites/<?php if(isset($info->image)) echo $info->image; ?>" alt=""> </div>
+															<div class="item-media entry-thumbnail"> <img src="<?php echo base_url(); ?>uploads/actualites/<?php if(isset($nom_image)) echo $nom_image; ?>" alt=""> </div>
 														</div>
 														<div class="col-md-7 col-lg-8">
 															<div class="item-content">
@@ -59,13 +65,18 @@
 							           <?php }
 
 
-							           if($compt == 2){ ?>
+							           if($compt == 2){ 
+                                          
+                                           $cle_img=$info->cle_img;
+			                       $nom_image=$this->corporate_model->nom_images($cle_img);
+
+							           	?>
 
 							           	<article class="post format-small-image topmargin_30 to_animate" data-animation="fadeInLeft">
 									<div class="side-item side-md content-padding big-padding with_border bottom_color_border right">
 										<div class="row">
 											<div class="col-md-5 col-lg-4">
-												<div class="item-media entry-thumbnail"> <img src="<?php echo base_url(); ?>uploads/actualites/<?php if(isset($info->image)) echo $info->image; ?>" alt=""> </div>
+												<div class="item-media entry-thumbnail"> <img src="<?php echo base_url(); ?>uploads/actualites/<?php if(isset($nom_image)) echo $nom_image; ?>" alt=""> </div>
 											</div>
 											<div class="col-md-7 col-lg-8">
 												<div class="item-content">
@@ -100,13 +111,18 @@
 							         <?php  }
 
 
-							         if($compt == 3){ ?>
+							         if($compt == 3){ 
+
+                                          $cle_img=$info->cle_img;
+			                       $nom_image=$this->corporate_model->nom_images($cle_img);
+			                       
+							         	?>
 
 							         	<article class="post format-small-image topmargin_30 to_animate" data-animation="fadeInRight">
 									<div class="side-item side-md content-padding big-padding with_border bottom_color_border left">
 										<div class="row">
 											<div class="col-md-5 col-lg-4">
-												<div class="item-media entry-thumbnail"> <img src="<?php echo base_url(); ?>uploads/actualites/<?php if(isset($info->image)) echo $info->image; ?>" alt=""> </div>
+												<div class="item-media entry-thumbnail"> <img src="<?php echo base_url(); ?>uploads/actualites/<?php if(isset($nom_image)) echo $nom_image; ?>" alt=""> </div>
 											</div>
 											<div class="col-md-7 col-lg-8">
 												<div class="item-content">

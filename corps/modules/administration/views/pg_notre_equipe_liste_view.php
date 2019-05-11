@@ -47,6 +47,9 @@
                                                                         $compt=0;
 															            foreach ($listeEquipe as $info) {
 															            	$compt++;
+
+															            	$cle_img=$info->cle_img;
+			                                                       $nom_image=$this->administration_model->nom_images($cle_img);
 			                                                              
 															    ?>
 
@@ -54,7 +57,7 @@
 																	<td><?php echo $compt; ?></td>
 																	<td ><?php if(isset($info->nom)) echo substr($info->nom, 0,25)." ..."; ?></td>
 																	<td><?php if(isset($info->titre)) echo substr($info->titre, 0,15)." ..."; ?></td>
-																	<td><img src="<?php echo base_url(); ?>uploads/equipe/<?php if(isset($info->photo)) echo $info->photo; ?>" width="100px;"></td>
+																	<td><img src="<?php echo base_url(); ?>uploads/equipe/<?php if(isset($nom_image)) echo $nom_image; ?>" width="100px;"></td>
 																	<td><?php if(isset($info->facebook)) echo substr($info->facebook, 0,15)." ..."; ?></td>
 																	<td><?php if(isset($info->twitter)) echo substr($info->twitter, 0,15)." ..."; ?></td>
 																	<td class="text-nowrap">

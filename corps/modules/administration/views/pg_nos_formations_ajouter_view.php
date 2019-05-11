@@ -15,21 +15,39 @@
 								</div>
                           </div>
 							<div class="row">
-
-								<?php echo form_open_multipart('administration/nosFormations'); ?> 
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
 										<div class="card-header">
-											<h2 class="mb-0">Ajouter/Modifier une image</h2>
+											<h2 class="mb-0">Ajouter/Modifier l'image de la formation</h2>
 										</div>
-										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
+
+										
+									
+
+										 	<div class="card-body">
+											
+											<div  class="row">
+				                                    <div class="col-sm">
+				                           <form action="<?php echo base_url(); ?>administration/upload_formation" class="dropzone">
+				                           	<input name="cle_img" type="hidden" value="<?php echo $cle_img; ?>">
+				                                            <div class="fallback">
+				                                                <input name="file" type="file" multiple />
+				                                            </div>
+				                                        </form>
+				                                    </div>
+                                               </div>
 										</div>
+
+										 
 									</div>
 								</div>
                                     
 							</div>
+
+
+                            <form action="<?php echo base_url(); ?>administration/nosFormations" method="POST">
+                            	<input name="cle_img" type="hidden" value="<?php echo $cle_img; ?>">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card shadow">
@@ -79,7 +97,7 @@
 												</div>
 											</div>
 
-											<?php echo form_close(); ?>
+											</form>
 
 										</div>
 									</div>

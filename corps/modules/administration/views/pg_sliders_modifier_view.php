@@ -14,39 +14,65 @@
 									</div>
 								</div>
 </div>
-							<div class="row">
-				<?php echo form_open_multipart("administration/slidersModifier/$id_slide"); ?> 
 
-									<?php
+<?php  
 
-														             if(isset($info_slide_id)){
-                                                                        
-															            foreach ($info_slide_id as $info) {
+											if(isset($info_slide_id)){
 
-															            	 $imgs =$info->img ;
-				                                                              if(empty($imgs) || $imgs==""){
+												foreach ($info_slide_id as $info) { 
 
-				                                                              	$img="1.jpg";
+													$cle_images=$info->cle_img;
+                                                    
+                                                    if($this->administration_model->nom_images($cle_images)){
 
-				                                                              }else{
+                                                    	$img=$this->administration_model->nom_images($cle_images);
 
-				                                                                $img=$imgs;
-				                                                              }
-															            	
-			                                                              
-															    ?>
-								<div class="col-lg-12">
+                                                    }else{
+
+                                                    	$img="sans.jpg";
+                                                    }
+													
+
+													
+
+												?>
+				<div class="row">
+								
+								<div class="col-md-6">
 									<div class="card shadow">
 										<div class="card-header">
-											<h2 class="mb-0">Ajouter/Modifier l'image Slider</h2>
+											<h2 class="mb-0">Ajouter/Modifier le slider</h2>
 										</div>
-										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/sliders/<?php if(isset($img)) echo $img; ?>" data-height="300"  />
+
+										
+									
+
+										 	<div class="card-body">
+											
+											<div  class="row">
+				                                    <div class="col-sm">
+				                           <form action="<?php echo base_url(); ?>administration/upload_slide_modifier" method="POST" class="dropzone">
+				                           		<input name="cle_img" type="hidden" value="<?php echo $cle_images; ?>">
+				                                            <div class="fallback">
+				                                                <input name="file" type="file" multiple />
+				                                            </div>
+				                                        </form>
+				                                    </div>
+                                               </div>
 										</div>
+
+										 
 									</div>
+								</div>
+
+								<div class="col-md-6" style="padding-left:10px;">
+									
+                                    <img width="80%" src="<?php echo base_url(); ?>uploads/sliders/<?php echo $img; ?>">
 								</div>
                                     
 							</div>
+
+
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card shadow">
@@ -54,6 +80,13 @@
 											<h2 class="mb-0">Formulaire</h2>
 										</div>
 										<div class="card-body">
+
+
+										<form action="<?php echo base_url(); ?>administration/slidersModifier/<?php echo $id_slide; ?>" method="POST">
+
+											
+													
+												
 											<div class="row">
 												<div class="col-md-6">
                                                     <input type="hidden" name="id_slide" value="<?php if(isset($info->id_slide)) echo $info->id_slide; ?>">
@@ -77,15 +110,16 @@
 														<input type="text" class="form-control is-invalid state-invalid" name="titre4" placeholder="Titre 4" value="<?php if(isset($info->titre4)) echo $info->titre4; ?>" >
 													</div>
 
-													<?php }
-												                    }
-
-												                ?>
-
 													
 												</div>
 												
 											</div>
+                                          
+                                          <?php }
+											}
+
+										 	?>
+
 											<div class="row" style="margin-top: 20px;">
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
@@ -94,7 +128,9 @@
 														</ul>
 												</div>
 											</div>
-											<?php echo form_close(); ?>
+
+                                           </form>
+
 										</div>
 									</div>
 									

@@ -35,7 +35,20 @@
 						   }
 
 						 ?>
-                       <?php echo form_open_multipart('corporate/envoiemail'); ?>
+						
+<?php 	
+  if(isset($mail)){
+       if($mail == "success"){ ?>
+
+       	<div style="width: 100%; height: 50px; background-color: green; text-align: center; padding-top: 10px; border-radius: 10px; margin-top: 20px;">
+			 <h5 style="color:white;">Mail envoyé avec succès</h5>
+		</div>
+
+      <?php }
+     }
+?>
+						
+                       <form action="<?php echo base_url(); ?>corporate/envoiemail_formulaire" method="POST">
 					<div class="row topmargin_60">
 						<div class="col-sm-12 to_animate">
 							<div class="contact-form cs parallax overlay_color columns_padding_5 rounded overflow_hidden" method="post" action="http://webdesign-finder.com/html/diversify/">
@@ -57,6 +70,6 @@
 							</div>
 						</div>
 					</div>
-					<?php echo form_close(); ?>
+					</form>
 				</div>
 			</section>

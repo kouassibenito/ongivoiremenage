@@ -8,11 +8,16 @@
 
 						if(isset($sliders)){
 
+                              
+							foreach ($sliders as $slide_item) { 
 
-							foreach ($sliders as $slide_item) { ?>
+									$cle_img=$slide_item->cle_img;
+			                          $nom_image=$this->corporate_model->nom_images($cle_img);
+
+								?>
 							
 							<li>
-							<div class="slide-image-wrap"> <img src="<?php echo base_url(); ?>uploads/sliders/<?php if(isset($slide_item->img)) echo $slide_item->img; ?>" alt="" /> </div>
+							<div class="slide-image-wrap"> <img src="<?php echo base_url(); ?>uploads/sliders/<?php if(isset($nom_image)) echo $nom_image; ?>" alt="" /> </div>
 							<div class="container">
 								<div class="row">
 									<div class="col-sm-12 text-center">

@@ -15,21 +15,27 @@
 								</div>
                          </div>
 							<div class="row">
-
-								<?php echo form_open_multipart('administration/nosVideos'); ?>
 								
 								<div class="col-lg-12">
 									<div class="card shadow">
 										<div class="card-header">
 											<h2 class="mb-0">Ajouter/Modifier la vidéo</h2>
 										</div>
-										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>assets/administration/img/photos/1.jpg" data-height="300"  />
-										</div>
+
+										
+									
+
+										 	
+
+										 
 									</div>
 								</div>
                                     
 							</div>
+
+                             <form action="<?php echo base_url(); ?>administration/nosVideos" method="POST">
+                            	
+
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card shadow">
@@ -54,7 +60,21 @@
 
 												
 												</div>
+
+                                         <div class="col-md-6">
+													
+
+													<div class="form-group">
+														<textarea class="form-control is-invalid state-invalid" rows="5" name="iframe_youtube" placeholder="Lien youtube"></textarea> 
+													</div>
+
+												
+												</div>
+
+
 											</div>
+
+
 											<div class="row" style="margin-top: 20px;">
                                                 <div class="col-md-12">
 													<ul class="list-inline wizard mb-0">
@@ -63,8 +83,7 @@
 														</ul>
 												</div>
 											</div>
-
-											<?php echo form_close(); ?>
+                                          </form>
 
 										</div>
 									</div>

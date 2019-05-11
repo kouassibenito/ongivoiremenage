@@ -13,46 +13,66 @@
 										<a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i> Paramètres</a>
 									</div>
 								</div>
-</div>
+							</div>
 
+								<?php  
+
+											if(isset($info_actualite_id)){
+
+												foreach ($info_actualite_id as $info) {
+
+                                                $cle_images=$info->cle_img;
+                                                    
+                                                    if($this->administration_model->nom_images($cle_images)){
+
+                                                    	$img=$this->administration_model->nom_images($cle_images);
+
+                                                    }else{
+
+                                                    	$img="sans.jpg";
+                                                    }
+
+												 ?>
+
+						
 
 							<div class="row">
-   <form action="<?php echo base_url(); ?>administration/nosActualitesModifier/<?php echo $id_actualite; ?>" method="POST">
-	
-								<?php
-
-														             if(isset($info_actualite_id)){
-                                                                        
-															            foreach ($info_actualite_id as $info) {
-
-															            	 $imgs =$info->image;
-				                                                              if(empty($imgs) || $imgs==""){
-
-				                                                              	$image="1.jpg";
-
-				                                                              }else{
-
-				                                                                $image=$imgs;
-				                                                              }
-															            	
-			                                                              
-															    ?>
 								
-								<div class="col-lg-12">
+								<div class="col-md-6">
 									<div class="card shadow">
 										<div class="card-header">
-											<h2 class="mb-0">Ajouter/Modifier une image</h2>
+											<h2 class="mb-0">Ajouter/Modifier le slider</h2>
 										</div>
 
 										
-										
-										<div class="card-body">
-											<input type="file" class="dropify" data-default-file="<?php echo base_url(); ?>uploads/actualite/<?php if(isset($image)) echo $image; ?>" data-height="300"  />
+									
+
+										 	<div class="card-body">
+											
+											<div  class="row">
+				                                    <div class="col-sm">
+				                           <form action="<?php echo base_url(); ?>administration/upload_actualite_modifier" method="POST" class="dropzone">
+				                           		<input name="cle_img" type="hidden" value="<?php echo $cle_images; ?>">
+				                                            <div class="fallback">
+				                                                <input name="file" type="file" multiple />
+				                                            </div>
+				                                        </form>
+				                                    </div>
+                                               </div>
 										</div>
+
+										 
 									</div>
+								</div>
+
+								<div class="col-md-6" style="padding-left:10px;">
+									
+                                    <img width="80%" src="<?php echo base_url(); ?>uploads/actualites/<?php echo $img; ?>">
 								</div>
                                     
 							</div>
+
+
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card shadow">
@@ -60,6 +80,11 @@
 											<h2 class="mb-0">Formulaire</h2>
 										</div>
 										<div class="card-body">
+
+                                            <form action="<?php echo base_url(); ?>administration/nosActualitesModifier/<?php echo $id_actualite; ?>" method="POST">
+
+											
+
 											<div class="row">
 												<div class="col-md-6">
 
@@ -95,9 +120,10 @@
 											</div>
 
 											<?php }
-												                    }
+											}
 
-												                ?>
+										 	?>
+
 
 											<div class="row" style="margin-top: 20px;">
                                                 <div class="col-md-12">
@@ -107,7 +133,9 @@
 														</ul>
 												</div>
 											</div>
-									</form>
+
+										</form>
+								
 										</div>
 									</div>
 									
